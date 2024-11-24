@@ -6,17 +6,18 @@ import { useForm } from 'react-hook-form'
 import Button from '@/components/ui/Button'
 
 import Input from '../Input'
-import { SignInSchema, SignInType } from '../schemas/sign-in'
+import { SignUpSchema, SignUpType } from '../schemas/auth'
 
 export default function SignUpForm() {
-  const { control } = useForm<SignInType>({
-    resolver: zodResolver(SignInSchema)
+  const { control } = useForm<SignUpType>({
+    resolver: zodResolver(SignUpSchema),
+    mode: 'onBlur'
   })
 
   return (
     <form
       action=''
-      className='flex flex-col gap-9'>
+      className='mx-auto max-w-[378px]'>
       <div className='mb-9 flex flex-col gap-5'>
         <Input
           control={control}
@@ -34,7 +35,11 @@ export default function SignUpForm() {
           name='password'
         />
       </div>
-      <Button>button</Button>
+      <Button
+        variant='filled'
+        className='mx-auto'>
+        Підтвердити
+      </Button>
     </form>
   )
 }

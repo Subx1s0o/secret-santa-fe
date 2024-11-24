@@ -6,7 +6,7 @@ import SignInForm from '@/components/forms/Auth/SignInForm'
 export default function SignIn() {
   return (
     <div
-      className='absolute right-[120px] top-[100px] rounded-[20px] bg-white px-4 py-6
+      className='absolute right-[120px] top-[100px] w-[486px] rounded-[20px] bg-white px-4 py-6
         shadow-super shadow-pink'>
       <div className='mb-9 flex justify-between'>
         <Link
