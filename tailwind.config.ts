@@ -14,7 +14,8 @@ export default {
        blue: "#0080FF",
        turquoise: "#93CBDF",
        red: "#FF0055",
-       grey: "#938C8C"
+       grey: "#938C8C",
+       "primary-pink": "rgba(227, 164, 226, 0.40)"
       },
       spaces: {
         9: "36px"
