@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import Button from '../ui/Button'
 import Navigation from './Navigation'
+import UserInfo from './UserInfo'
 
 const isLogged = true
 
@@ -22,12 +23,7 @@ export default function Header() {
       {isLogged && (
         <div className='flex flex-1 items-center justify-between'>
           <Navigation />
-          <div className='flex items-center gap-4'>
-            <p className='text-md text-blue'>Можливе Імʼя</p>
-            <Button variant='bordered'>
-              <p>Вихід</p>
-            </Button>
-          </div>
+          <UserInfo />
         </div>
       )}
     </header>
