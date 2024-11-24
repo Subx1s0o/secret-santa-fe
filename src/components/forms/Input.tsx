@@ -25,12 +25,13 @@ export default function Input({
         <input
           {...control.register(name)}
           {...inputProps}
-          className='w-full rounded-[20px] border border-grey p-[14px] placeholder:text-grey'
+          className='w-full rounded-[20px] border border-grey p-[14px] text-lg outline-none
+            transition-colors placeholder:text-grey focus-visible:border-blue'
         />
       </div>
       {errors[name] && (
-        <div className='ml-3 mt-1'>
-          <p className='text-lg text-red'>{errors[name].message?.toString()}</p>
+        <div className='ml-[14px] mt-1'>
+          <p className='text-md text-red'>{errors[name].message?.toString()}</p>
         </div>
       )}
     </div>

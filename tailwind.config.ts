@@ -14,7 +14,7 @@ export default {
        blue: "#0080FF",
        turquoise: "#93CBDF",
        red: "#FF0055",
-       grey: "rgba(0, 0, 0, 0.88)"
+       grey: "#938C8C"
       },
       spaces: {
         9: "36px"
@@ -31,6 +31,7 @@ export default {
       },
       backgroundImage: {
         santa: "url('/santa.avif')",
+        "blue-gradient": "linear-gradient(90deg, #0080FF 0%, #66B3FF 100%)"
       },
     },
   },
