@@ -4,8 +4,8 @@ const isLogged = true
 
 export default function middleware(request: NextRequest) {
   if (
-    (request.nextUrl.pathname.startsWith('/sign-in') ||
-      request.nextUrl.pathname.startsWith('/sign-up')) &&
+    (request.nextUrl.pathname === '/sign-in' ||
+      request.nextUrl.pathname === '/sign-up') &&
     isLogged
   ) {
     return NextResponse.redirect(new URL('/rooms', request.url))
