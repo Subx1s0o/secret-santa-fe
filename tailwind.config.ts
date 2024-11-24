@@ -8,7 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-       
+       black: "#4D4747",
+       pink: "#E3A4E2",
+       "light-blue": "#66B3FF",
+       blue: "#0080FF"
       },
       spaces:{},
       fontSize: {},
