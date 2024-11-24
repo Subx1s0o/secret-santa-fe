@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${Anonymous.className} h-[calc(100vh-122px)] antialiased`}>
+        className={`${Anonymous.className} h-[calc(100vh-122px)] bg-turquoise antialiased`}>
         <Header />
         <main className='relative h-full bg-santa bg-cover'>{children}</main>
       </body>

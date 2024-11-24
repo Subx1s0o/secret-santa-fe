@@ -8,11 +8,15 @@ export default function middleware(request: NextRequest) {
       request.nextUrl.pathname.startsWith('/sign-up')) &&
     isLogged
   ) {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/rooms', request.url))
   }
 
   if (request.nextUrl.pathname === '/' && !isLogged) {
     return NextResponse.redirect(new URL('/sign-in', request.url))
+  }
+
+  if (request.nextUrl.pathname === '/' && isLogged) {
+    return NextResponse.redirect(new URL('/rooms', request.url))
   }
 
   return NextResponse.next()

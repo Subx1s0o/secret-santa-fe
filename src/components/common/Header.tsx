@@ -1,5 +1,4 @@
 import cn from '@/lib/cn'
-import Link from 'next/link'
 
 import Navigation from './Navigation'
 import UserInfo from './UserInfo'
@@ -16,9 +15,8 @@ export default function Header() {
           'justify-start': isLogged
         }
       )}>
-      <Link href='/'>
-        <h1 className='text-xl'>Таємний Санта</h1>
-      </Link>
+      <h1 className='text-xl'>Таємний Санта</h1>
+
       {isLogged && (
         <div className='flex flex-1 items-center justify-between'>
           <Navigation />
