@@ -20,7 +20,8 @@ export default {
         9: "36px"
       },
       boxShadow: {
-        super: "0px 0px 50px 20px"
+        super: "0px 0px 50px 20px",
+        bottom: "0px 4px 20px 4px"
       },
       fontSize: {
         xl: ["36px",{fontWeight: 700}],

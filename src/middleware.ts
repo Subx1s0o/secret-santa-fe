@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const isLogged = false
+const isLogged = true
 
 export default function middleware(request: NextRequest) {
   if (
