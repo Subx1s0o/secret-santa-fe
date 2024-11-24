@@ -12,7 +12,9 @@ export default {
       },
       spaces:{},
       fontSize: {},
-     
+      backgroundImage: {
+        santa: "url('/santa.avif')",
+      },
     },
   },
   plugins: [],

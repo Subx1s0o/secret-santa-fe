@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` antialiased`}
+        className={`bg-santa bg-cover antialiased`}
       >
         {children}
       </body>
