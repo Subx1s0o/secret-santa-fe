@@ -1,7 +1,6 @@
 import cn from '@/lib/cn'
 import Link from 'next/link'
 
-import Button from '../ui/Button'
 import Navigation from './Navigation'
 import UserInfo from './UserInfo'
 
