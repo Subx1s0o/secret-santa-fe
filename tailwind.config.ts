@@ -14,7 +14,13 @@ export default {
        blue: "#0080FF"
       },
       spaces:{},
-      fontSize: {},
+      fontSize: {
+        xl: ["36px",{fontWeight: 700}],
+        lg: ["24px", {lineHeight: "32px"}],
+        md: ["18px", {lineHeight: "24px"}],
+        sm: ["14px", {lineHeight: "14px"}]
+
+      },
       backgroundImage: {
         santa: "url('/santa.avif')",
       },
