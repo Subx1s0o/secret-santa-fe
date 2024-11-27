@@ -1,9 +1,14 @@
 import { getRooms } from '@/actions/getRooms'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 
-export default async function Rooms() {
-  const { data, error } = await getRooms()
+import JoinConnect from '@/components/common/JoinConnect'
 
+export default async function Rooms() {
+  const token = cookies().get('join_token')?.value
+
+  const { data, error } = await getRooms()
+  console.log(data)
   if (error) {
     return <div className=''>{error}</div>
   }
@@ -34,6 +39,7 @@ export default async function Rooms() {
           </ul>
         </div>
       </div>
+      {token && <JoinConnect token={token} />}
     </section>
   )
 }

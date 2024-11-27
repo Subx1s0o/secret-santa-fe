@@ -1,43 +1,34 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import io, { Socket } from 'socket.io-client'
 
 const RoomComponent = ({ params }: { params: { roomId: string } }) => {
-  const socketRef = useRef<Socket | null>(null)
+  const [socket, setSocket] = useState<Socket | null>(null)
 
   useEffect(() => {
-    // Ініціалізація сокета
-    const socket = io('http://localhost:4000', {})
-    socketRef.current = socket
+    const socket = io(process.env.NEXT_PUBLIC_API_URL)
+    setSocket(socket)
 
-    // Логування при підключенні
     socket.on('connect', () => {
       console.log('Connected to WebSocket server')
     })
 
-    // Відправка події для сервера
-    socket.emit('connected', 'next js')
-
-    // Логування події user-joined
     socket.on('user-joined', updatedRoom => {
-      if (updatedRoom.roomId === params.roomId) {
-        console.log('User joined room, refetching data...')
-      }
+      console.log('User joined room:', updatedRoom)
+      // Тут ви можете додати логіку для оновлення даних на клієнті
     })
 
-    // Очищення ресурсу при розмонтуванні
     return () => {
       socket.disconnect()
-      socketRef.current = null
+      setSocket(null)
     }
   }, [params.roomId])
-
-  console.log(socketRef)
 
   return (
     <div>
       <h1>Room {params.roomId}</h1>
+      {/* Додатковий контент, якщо необхідно */}
     </div>
   )
 }
