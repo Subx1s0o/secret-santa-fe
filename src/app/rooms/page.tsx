@@ -7,7 +7,6 @@ export default async function Rooms() {
   if (error) {
     return <div className=''>{error}</div>
   }
-  console.log(data)
 
   return (
     <section>
@@ -22,7 +21,7 @@ export default async function Rooms() {
                 className='flex items-center justify-between'
                 key={room.id}>
                 <div className='flex items-center gap-2'>
-                  <span className='text-md'> {index + 1}</span>{' '}
+                  <span className='text-md'> {index + 1}</span>
                   <p className='text-md'>{room.title}</p>
                 </div>
                 <Link
