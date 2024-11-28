@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ComponentProps } from 'react'
+import cn from '@/lib/cn'
 import { Control, useController } from 'react-hook-form'
 
 type InputProps = ComponentProps<'input'> & {
   control: Control<any>
   name: string
   label?: string
+  className?: string
 }
 
 export default function Input({
   name,
   control,
   label,
+  className,
   ...inputProps
 }: InputProps) {
   const {
@@ -25,8 +28,10 @@ export default function Input({
         <input
           {...control.register(name)}
           {...inputProps}
-          className='w-full rounded-[20px] border border-grey p-[14px] text-lg outline-none
-            transition-colors placeholder:text-grey focus-visible:border-blue'
+          className={cn(
+            `w-full rounded-[20px] border border-grey p-[14px] text-lg outline-none
+            transition-colors placeholder:text-grey focus-visible:border-blue ${className}`
+          )}
         />
       </div>
       {errors[name] && (

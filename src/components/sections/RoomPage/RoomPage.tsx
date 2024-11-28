@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useSantaSocketStore } from '@/stores/useSantaSocketStore'
 import { Room } from '@/types/room'
+import { toast } from 'react-toastify'
 import io from 'socket.io-client'
 
 import SantaMembersList from './components/SantaMembersList/SantaMembersList'
@@ -35,14 +36,21 @@ export default function RoomComponent({
     socket.on('room', room => console.log(room))
 
     socket.on('room-updated', updatedRoom => {
-      console.log('User joined room:', updatedRoom)
       setCurrentRoom(updatedRoom)
+      toast.success('Санта оновив свої сані')
+    })
+
+    socket.on('room-not-updated', error => {
+      toast.error('У Санти проблеми з Санями :(')
+      console.log(error)
     })
 
     return () => {
       socket.off('connect-room')
       socket.off('user-joined')
       socket.off('room')
+      socket.off('room-updated')
+      socket.off('room-not-updated')
       socket.disconnect()
       setSocket(null)
     }

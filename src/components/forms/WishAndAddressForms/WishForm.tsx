@@ -66,7 +66,9 @@ export default function WishForm({ user, roomId, token }: WishFormProps) {
             overscrollBehavior: 'contain'
           }}
           trigger={
-            <p className='cursor-pointer text-md text-grey'>
+            <p
+              className='max-w-[250px] cursor-pointer overflow-hidden text-ellipsis text-nowrap text-md
+                text-grey'>
               {user.wishes[0]?.content || 'Немає бажання'}
             </p>
           }>
