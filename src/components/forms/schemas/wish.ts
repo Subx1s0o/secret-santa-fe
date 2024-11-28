@@ -1,9 +1,7 @@
-import { z } from "zod";
-
+import { z } from 'zod'
 
 export const WishSchema = z.object({
-  content: z.string().min(1,"Бажання не може бути пусте"),
- })
+  wish: z.string().min(1, 'Бажання не може бути пусте')
+})
 
-export type WishType = z.infer<typeof WishSchema>;
-
+export type WishType = z.infer<typeof WishSchema>

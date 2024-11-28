@@ -1,18 +1,22 @@
-import React from 'react'
 import { Room } from '@/types/room'
 
 import MembersList from './MembersList'
 import SantaMembersHeader from './SantaMembersHeader'
 
 export default function SantaMembersList({
-  santa
+  santa,
+  session
 }: {
   santa: Room | undefined
+  session: string | null
 }) {
   return (
     <div className='mb-2 px-[18px] py-3'>
       <SantaMembersHeader />
-      <MembersList santa={santa} />
+      <MembersList
+        session={session}
+        santa={santa}
+      />
     </div>
   )
 }

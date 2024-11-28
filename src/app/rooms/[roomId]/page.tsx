@@ -1,7 +1,5 @@
-import React from 'react'
 import { getSession } from '@/actions/getSession'
 import { Room } from '@/types/room'
-import { cookies } from 'next/headers'
 
 import RoomPage from '@/components/sections/RoomPage/RoomPage'
 

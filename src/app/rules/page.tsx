@@ -2,8 +2,8 @@ export default function page() {
   return (
     <section>
       <div
-        className='bg-primary-pink fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-          rounded-[20px] px-[80px] py-[50px]'>
+        className='fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[20px]
+          bg-primary-pink px-[80px] py-[50px]'>
         <div className='w-[996px] rounded-[20px] bg-white p-8'>
           <h2 className='mb-6 text-center text-lg font-bold'>
             Щоб розібратись

@@ -1,18 +1,19 @@
-
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
-
 export default function middleware(request: NextRequest) {
-  const url = new URL(request.url);
-  const token = url.searchParams.get('join');
-  const session = cookies().get("session")?.value
+  const url = new URL(request.url)
+  const token = url.searchParams.get('join')
+  const session = cookies().get('session')?.value
 
   if (token) {
-    return NextResponse.redirect(new URL('/api/set-cookie?join=' + token, url));
+    return NextResponse.redirect(new URL('/api/set-cookie?join=' + token, url))
   }
 
-  if (request.nextUrl.pathname.startsWith('/rooms/status') && !cookies().get("join_token")?.value) {
+  if (
+    request.nextUrl.pathname.startsWith('/rooms/status') &&
+    !cookies().get('join_token')?.value
+  ) {
     return NextResponse.redirect(new URL('/rooms', request.url))
   }
 
@@ -40,11 +41,9 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/rooms', request.url))
   }
 
-
-
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/', '/sign-in', '/sign-up', "/rooms", "/rooms/:path*", '/rules']
+  matcher: ['/', '/sign-in', '/sign-up', '/rooms', '/rooms/:path*', '/rules']
 }

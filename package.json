@@ -19,6 +19,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.2",
     "react-toastify": "^10.0.6",
+    "reactjs-popup": "^2.0.6",
     "socket.io-client": "^4.8.1",
     "tailwind-merge": "^2.5.4",
     "zod": "^3.23.8",

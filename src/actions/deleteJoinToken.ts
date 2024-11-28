@@ -1,9 +1,9 @@
+'use server'
 
-'use server';
 import { cookies } from 'next/headers'
 
 const deleteJoinToken = async () => {
-  const cookie = cookies();
-  cookie.delete('join_token'); 
+  const cookie = cookies()
+  cookie.delete('join_token')
 }
-export default deleteJoinToken;
+export default deleteJoinToken

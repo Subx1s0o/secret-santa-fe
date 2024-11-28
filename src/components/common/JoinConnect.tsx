@@ -27,6 +27,7 @@ const SocketConnect = ({ token, session }: SocketConnectProps) => {
         router.replace('/rooms/status/failed')
       }
     })
+
     return () => {
       socket.disconnect()
     }
