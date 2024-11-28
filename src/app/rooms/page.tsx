@@ -1,4 +1,5 @@
 import { getRooms } from '@/actions/getRooms'
+import { getSession } from '@/actions/getSession'
 import { Room } from '@/types/room'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
@@ -7,7 +8,7 @@ import JoinConnect from '@/components/common/JoinConnect'
 
 export default async function Rooms() {
   const token = cookies().get('join_token')?.value
-  const session = cookies().get('session')?.value
+  const session = await getSession()
 
   const { data, error } = await getRooms()
 

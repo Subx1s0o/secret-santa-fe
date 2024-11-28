@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export default function middleware(request: NextRequest) {
   const url = new URL(request.url);
   const token = url.searchParams.get('join');
-  const session = cookies().get("session")
+  const session = cookies().get("session")?.value
 
   if (token) {
     return NextResponse.redirect(new URL('/api/set-cookie?join=' + token, url));

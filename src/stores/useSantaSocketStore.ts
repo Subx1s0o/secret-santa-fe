@@ -1,4 +1,4 @@
-import { Room } from "@/types/room";
+
 import { Socket } from "socket.io-client";
 import { create } from "zustand";
 

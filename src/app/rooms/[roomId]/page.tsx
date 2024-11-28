@@ -1,4 +1,5 @@
 import React from 'react'
+import { getSession } from '@/actions/getSession'
 import { Room } from '@/types/room'
 import { cookies } from 'next/headers'
 
@@ -9,7 +10,7 @@ export default async function RoomIdPage({
 }: {
   params: { roomId: string }
 }) {
-  const session = cookies().get('session')?.value
+  const session = await getSession()
   const roomWithId = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/rooms/${params.roomId}`,
     {

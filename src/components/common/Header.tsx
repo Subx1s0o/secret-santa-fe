@@ -1,12 +1,30 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import cn from '@/lib/cn'
-import { cookies } from 'next/headers'
+import Cookies from 'js-cookie'
 
 import Navigation from './Navigation'
 import UserInfo from './UserInfo'
 
-const isLogged = cookies().get('session')
-
 export default function Header() {
+  const [isLogged, setIsLogged] = useState<boolean>(false)
+
+  useEffect(() => {
+    const checkSession = () => {
+      const session = Cookies.get('session')
+      setIsLogged(!!session)
+    }
+
+    checkSession()
+    const cookieChangeListener = () => checkSession()
+
+    window.addEventListener('cookiechange', cookieChangeListener)
+    return () => {
+      window.removeEventListener('cookiechange', cookieChangeListener)
+    }
+  }, [])
+
   return (
     <header
       className={cn(

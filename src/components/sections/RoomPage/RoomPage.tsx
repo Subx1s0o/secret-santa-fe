@@ -11,7 +11,7 @@ import SantaInfo from './components/SantasInfo'
 interface RoomComponentProps {
   roomId: string
   room: Room
-  session: string | undefined
+  session: string | null
 }
 
 export default function RoomComponent({

@@ -6,7 +6,7 @@ import io from 'socket.io-client'
 
 interface SocketConnectProps {
   token: string
-  session: string
+  session: string | undefined
 }
 
 const SocketConnect = ({ token, session }: SocketConnectProps) => {
