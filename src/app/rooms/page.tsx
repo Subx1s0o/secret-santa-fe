@@ -48,11 +48,15 @@ export default async function Rooms() {
           </ul>
         </div>
       </div>
+
       {token && session && (
-        <JoinConnect
-          token={token}
-          session={session}
-        />
+        <>
+          <div className='fixed inset-0 z-50 bg-turquoise text-xl'>SANTA</div>
+          <JoinConnect
+            token={token}
+            session={session}
+          />
+        </>
       )}
     </section>
   )

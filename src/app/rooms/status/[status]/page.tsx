@@ -4,6 +4,9 @@ import { useEffect } from 'react'
 import deleteJoinToken from '@/actions/deleteJoinToken'
 import { useRouter } from 'next/navigation'
 
+import ErrorStatusSection from '@/components/sections/StatusSections/ErrorStatusSection'
+import SuccessStatusSection from '@/components/sections/StatusSections/SuccessStatusSection'
+
 interface PageProps {
   params: { status: string }
 }
@@ -20,5 +23,11 @@ export default function StatusPage({ params }: PageProps) {
     }
   }, [params.status, router])
 
-  return <div>{params.status}</div>
+  if (params.status === 'success') {
+    return <SuccessStatusSection />
+  }
+
+  if (params.status === 'failed') {
+    return <ErrorStatusSection />
+  }
 }

@@ -1,6 +1,6 @@
-import Button from '../ui/Button'
+import Button from '../../ui/Button'
 
-export default function Success() {
+export default function SuccessStatusSection() {
   return (
     <section className='relative'>
       <div
@@ -13,8 +13,9 @@ export default function Success() {
         </p>
         <Button
           variant='filled'
-          type='submit'
-          className='mx-auto'>
+          href='/rooms'
+          activate='link'
+          className='mx-auto table'>
           Мій Санта
         </Button>
       </div>
