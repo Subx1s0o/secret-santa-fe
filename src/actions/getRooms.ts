@@ -1,9 +1,10 @@
 "use server"
-import { cookies } from "next/headers"
+
+import { getSession } from "./getSession";
 
 
 export async function getRooms() {
-    const session = cookies().get("session")?.value
+    const session = await getSession()
 
     if (!session) {
         return { error: "No session found. Please log in." }
