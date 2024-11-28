@@ -5,6 +5,7 @@ import './globals.css'
 import { Anonymous_Pro } from 'next/font/google'
 
 import Header from '@/components/common/Header'
+import ToastFooter from '@/components/common/ToastFooter'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,11 +23,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
+    <html lang='uk'>
       <body
         className={`${Anonymous.className} h-[calc(100vh-122px)] bg-turquoise antialiased`}>
         <Header />
         <main className='relative h-full bg-santa bg-cover'>{children}</main>
+        <ToastFooter />
       </body>
     </html>
   )

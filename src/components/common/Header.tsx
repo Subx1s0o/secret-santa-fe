@@ -1,15 +1,16 @@
 import cn from '@/lib/cn'
+import { cookies } from 'next/headers'
 
 import Navigation from './Navigation'
 import UserInfo from './UserInfo'
 
-const isLogged = true
+const isLogged = cookies().get('session')
 
 export default function Header() {
   return (
     <header
       className={cn(
-        'shadow-bottom flex gap-[42px] bg-turquoise px-[120px] py-[34px] shadow-black',
+        'flex gap-[42px] bg-turquoise px-[120px] py-[34px] shadow-bottom shadow-black',
         {
           'justify-center': !isLogged,
           'justify-start': isLogged
