@@ -21,7 +21,7 @@ export default function AddressForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
-        placeholder={errors.address?.message}
+        placeholder={errors.address?.message || 'написати'}
         {...register('address')}
         type='text'
         className='absolute right-0 top-1/2 w-[212px] -translate-y-1/2 rounded-[14px] border
