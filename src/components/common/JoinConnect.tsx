@@ -1,26 +1,38 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import io from 'socket.io-client'
 
 interface SocketConnectProps {
   token: string
+  session: string
 }
 
-const SocketConnect = ({ token }: SocketConnectProps) => {
+const SocketConnect = ({ token, session }: SocketConnectProps) => {
+  const router = useRouter()
+
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_API_URL) // Підключення до вашого сервера сокетів
-    socket.emit('connected', 'connect')
-
-    // Після підключення, надсилаємо токен для приєднання до кімнати
-    socket.emit('join-room', token) // Відправляємо токен через еміт, щоб приєднатися до кімнати
-
-    return () => {
-      socket.disconnect() // Не забувайте відключати сокет при виході
+    if (!token || !session) {
+      return
     }
-  }, [token])
+    const socket = io(process.env.NEXT_PUBLIC_API_URL)
 
-  return <></> // Цей компонент не потребує візуального відображення
+    socket.emit('join-room', { room: token, sessionToken: session })
+
+    socket.on('room-joined', response => {
+      if (response.success) {
+        router.replace('/rooms/status/success')
+      } else {
+        router.replace('/rooms/status/failed')
+      }
+    })
+    return () => {
+      socket.disconnect()
+    }
+  }, [token, session, router])
+
+  return null
 }
 
 export default SocketConnect

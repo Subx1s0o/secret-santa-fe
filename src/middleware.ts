@@ -8,9 +8,12 @@ export default function middleware(request: NextRequest) {
   const token = url.searchParams.get('join');
   const session = cookies().get("session")
 
-
   if (token) {
     return NextResponse.redirect(new URL('/api/set-cookie?join=' + token, url));
+  }
+
+  if (request.nextUrl.pathname.startsWith('/rooms/status') && !cookies().get("join_token")?.value) {
+    return NextResponse.redirect(new URL('/rooms', request.url))
   }
 
   if (request.nextUrl.pathname === '/rules' && !session) {

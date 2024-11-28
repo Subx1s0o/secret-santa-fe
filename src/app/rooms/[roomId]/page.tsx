@@ -1,36 +1,31 @@
-'use client'
+import React from 'react'
+import { Room } from '@/types/room'
+import { cookies } from 'next/headers'
 
-import { useEffect, useState } from 'react'
-import io, { Socket } from 'socket.io-client'
+import RoomPage from './RoomPage'
 
-const RoomComponent = ({ params }: { params: { roomId: string } }) => {
-  const [socket, setSocket] = useState<Socket | null>(null)
-
-  useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_API_URL)
-    setSocket(socket)
-
-    socket.on('connect', () => {
-      console.log('Connected to WebSocket server')
-    })
-
-    socket.on('user-joined', updatedRoom => {
-      console.log('User joined room:', updatedRoom)
-      // Тут ви можете додати логіку для оновлення даних на клієнті
-    })
-
-    return () => {
-      socket.disconnect()
-      setSocket(null)
+export default async function RoomIdPage({
+  params
+}: {
+  params: { roomId: string }
+}) {
+  const session = cookies().get('session')?.value
+  const roomWithId = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/rooms/${params.roomId}`,
+    {
+      cache: 'no-cache',
+      headers: {
+        Authorization: `Bearer ${session}`
+      }
     }
-  }, [params.roomId])
-
+  )
+  const room = (await roomWithId.json()) as Room
+  console.log(room)
   return (
-    <div>
-      <h1>Room {params.roomId}</h1>
-      {/* Додатковий контент, якщо необхідно */}
-    </div>
+    <RoomPage
+      session={session}
+      roomId={params.roomId}
+      room={room}
+    />
   )
 }
-
-export default RoomComponent

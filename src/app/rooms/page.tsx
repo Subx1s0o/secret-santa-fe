@@ -1,4 +1,5 @@
 import { getRooms } from '@/actions/getRooms'
+import { Room } from '@/types/room'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 
@@ -6,9 +7,10 @@ import JoinConnect from '@/components/common/JoinConnect'
 
 export default async function Rooms() {
   const token = cookies().get('join_token')?.value
+  const session = cookies().get('session')?.value
 
   const { data, error } = await getRooms()
-  console.log(data)
+
   if (error) {
     return <div className=''>{error}</div>
   }
@@ -21,7 +23,7 @@ export default async function Rooms() {
         <div className='w-[486px] rounded-[20px] bg-white p-8'>
           <h2 className='mb-6 text-center text-lg font-bold'>Всі ваші Санти</h2>
           <ul>
-            {data.map((room, index: number) => (
+            {data.map((room: Room, index: number) => (
               <li
                 className='flex items-center justify-between'
                 key={room.id}>
@@ -39,7 +41,12 @@ export default async function Rooms() {
           </ul>
         </div>
       </div>
-      {token && <JoinConnect token={token} />}
+      {token && session && (
+        <JoinConnect
+          token={token}
+          session={session}
+        />
+      )}
     </section>
   )
 }

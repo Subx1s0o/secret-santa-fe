@@ -8,10 +8,10 @@ export async function GET(request: NextRequest) {
 
   if (token) {
     const cookie = cookies();
-    cookie.set('join_token', token, { httpOnly: true, path: '/' });
+    cookie.set('join_token', token, {maxAge: 5 * 60 * 1000});
   }
 
-  const redirectUrl = new URL('/', url.origin);
+  const redirectUrl = new URL('/rooms', url.origin);
   
 return NextResponse.redirect(redirectUrl);
 }
