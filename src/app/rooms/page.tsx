@@ -21,20 +21,21 @@ export default async function Rooms() {
         className='absolute right-[120px] top-[100px] rounded-[20px] bg-primary-pink px-[80px]
           py-[50px]'>
         <div className='w-[486px] rounded-[20px] bg-white p-8'>
-          <h2 className='mb-6 text-center text-lg font-bold'>Всі ваші Санти</h2>
-          <ul>
+          <h2 className='mb-6 text-lg font-bold'>Всі ваші Санти</h2>
+          <ul className='flex flex-col gap-2'>
             {data.map((room: Room, index: number) => (
               <li
-                className='flex items-center justify-between'
+                className='border-b border-grey'
                 key={room.id}>
-                <div className='flex items-center gap-2'>
-                  <span className='text-md'> {index + 1}</span>
-                  <p className='text-md'>{room.title}</p>
-                </div>
                 <Link
-                  className='px-5 py-2 text-sm text-blue'
+                  className='flex items-center justify-between pb-[10px] pl-2 pt-2'
                   href={`rooms/${room.id}`}>
-                  Детальніше
+                  <div className='flex items-center gap-2'>
+                    <span className='text-md'> {index + 1}</span>
+                    <p className='text-md'>{room.title}</p>
+                  </div>
+
+                  <p className='pr-5 text-sm text-blue'> Детальніше</p>
                 </Link>
               </li>
             ))}

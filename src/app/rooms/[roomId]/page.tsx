@@ -2,7 +2,7 @@ import React from 'react'
 import { Room } from '@/types/room'
 import { cookies } from 'next/headers'
 
-import RoomPage from './RoomPage'
+import RoomPage from '@/components/sections/RoomPage/RoomPage'
 
 export default async function RoomIdPage({
   params
@@ -20,7 +20,7 @@ export default async function RoomIdPage({
     }
   )
   const room = (await roomWithId.json()) as Room
-  console.log(room)
+
   return (
     <RoomPage
       session={session}
