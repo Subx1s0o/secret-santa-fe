@@ -2,6 +2,7 @@ import { getRooms } from '@/actions/getRooms'
 import { getSession } from '@/actions/getSession'
 import { Room } from '@/types/room'
 import { cookies } from 'next/headers'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import JoinConnect from '@/components/common/JoinConnect'
@@ -51,7 +52,14 @@ export default async function Rooms() {
 
       {token && session && (
         <>
-          <div className='fixed inset-0 z-50 bg-turquoise text-xl'>SANTA</div>
+          <div className='fixed inset-0 z-50 flex items-center justify-center bg-turquoise text-xl'>
+            <Image
+              src='/santa-gif.webp'
+              width={600}
+              height={600}
+              alt='Santa gif'
+            />
+          </div>
           <JoinConnect
             token={token}
             session={session}
