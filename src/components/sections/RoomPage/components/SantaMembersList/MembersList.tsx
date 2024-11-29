@@ -22,12 +22,13 @@ export default function MembersList({
           <SantaCopyingLinkButton
             link={user.name}
             initialText={`${index + 1}. ${user.name}`}
-            className='flex max-w-[200px] gap-2 overflow-hidden text-ellipsis text-md'
+            className='max-w-[200px] gap-2 overflow-hidden text-ellipsis text-nowrap text-md'
           />
           <SantaCopyingLinkButton
             link={user.email}
             initialText={user.email}
-            className='absolute left-[240px] max-w-[150px] overflow-hidden text-ellipsis text-md'
+            className='absolute left-[240px] max-w-[150px] overflow-hidden text-ellipsis text-nowrap
+              text-md'
           />
 
           <WishForm
