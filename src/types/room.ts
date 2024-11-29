@@ -7,6 +7,9 @@ export type RoomUser = {
   addresses: Array<{
     content: string
   }>
+  statusses: Array<{
+    status: boolean
+  }>
 }
 
 export type Room = {
@@ -15,5 +18,6 @@ export type Room = {
   owner: string
   limit?: number
   url: string
+  randomizer: boolean
   users: RoomUser[]
 }
