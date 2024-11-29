@@ -6,6 +6,7 @@ import { Anonymous_Pro } from 'next/font/google'
 
 import Header from '@/components/common/Header'
 import ToastFooter from '@/components/common/ToastFooter'
+import Providers from '@/components/providers/Providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -27,7 +28,11 @@ export default function RootLayout({
       <body
         className={`${Anonymous.className} h-[calc(100vh-122px)] bg-turquoise antialiased`}>
         <Header />
-        <main className='relative h-full bg-santa bg-cover'>{children}</main>
+
+        <main className='relative h-full bg-santa bg-cover'>
+          <Providers>{children}</Providers>
+        </main>
+
         <ToastFooter />
       </body>
     </html>
