@@ -41,7 +41,7 @@ export default function WishForm({ user, roomId, token }: WishFormProps) {
   }
 
   return (
-    <div className='absolute left-[445px] top-1/2 -translate-y-1/2'>
+    <div className='absolute left-[443px] top-1/2 -translate-y-1/2'>
       {user.email === storedUser?.email ? (
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -63,16 +63,17 @@ export default function WishForm({ user, roomId, token }: WishFormProps) {
             overflowY: 'auto',
             width: '600px',
             height: '600px',
-            overscrollBehavior: 'contain'
+            overscrollBehavior: 'contain',
+            padding: '20px'
           }}
           trigger={
             <p
-              className='max-w-[250px] cursor-pointer overflow-hidden text-ellipsis text-nowrap text-md
+              className='w-[212px] cursor-pointer overflow-hidden text-ellipsis text-nowrap text-md
                 text-grey'>
               {user.wishes[0]?.content || 'Немає бажання'}
             </p>
           }>
-          <div className='bg-white p-5'>
+          <div className='bg-white'>
             <h3 className='mb-3 w-full text-center text-lg font-bold'>
               Бажання ельфа: {user.name}
             </h3>

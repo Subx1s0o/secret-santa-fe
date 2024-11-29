@@ -41,11 +41,11 @@ export default function AddressFrom({ user, roomId, token }: AddressFromProps) {
   }
 
   return (
-    <div className='absolute right-[4px] top-1/2 -translate-y-1/2'>
+    <div className='absolute right-0 top-1/2 -translate-y-1/2'>
       {user.email === storedUser?.email ? (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex items-center gap-4'>
+          className='absolute right-[4px] top-1/2 flex -translate-y-1/2 items-center gap-4'>
           <input
             defaultValue={user.addresses[0]?.content || ''}
             placeholder={errors.address?.message || 'Написати'}
@@ -63,14 +63,17 @@ export default function AddressFrom({ user, roomId, token }: AddressFromProps) {
             overflowY: 'auto',
             width: '600px',
             height: '600px',
-            overscrollBehavior: 'contain'
+            overscrollBehavior: 'contain',
+            padding: '20px'
           }}
           trigger={
-            <p className='cursor-pointer text-md text-grey'>
+            <p
+              className='w-[212px] cursor-pointer overflow-hidden text-ellipsis text-nowrap text-md
+                text-grey'>
               {user.addresses[0]?.content || 'Немає адреси'}
             </p>
           }>
-          <div className='bg-white p-5'>
+          <div className='bg-white'>
             <h3 className='mb-3 w-full text-center text-lg font-bold'>
               Адреса ельфа: {user.name}
             </h3>
