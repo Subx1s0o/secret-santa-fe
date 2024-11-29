@@ -21,6 +21,7 @@ export async function login(data: SignInType) {
 
     if (!response.ok) {
       const errorData = await response.json()
+      console.log(errorData)
       throw new Error(errorData.message || `Помилка: ${response.statusText}`)
     }
 
@@ -31,6 +32,9 @@ export async function login(data: SignInType) {
 
     redirect('/rooms')
   } catch (error) {
-    throw error
+    if (error instanceof Error) {
+      throw new Error(error.message)
+    }
+    throw new Error('Невідома помилка сервера.')
   }
 }
