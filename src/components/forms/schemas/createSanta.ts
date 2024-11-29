@@ -5,8 +5,9 @@ export const createSantaSchema = z.object({
   limit: z
     .preprocess(
       (value) => (value === "" || value === null ? undefined : Number(value)), 
-      z.number().min(1, "Ліміт повинен бути не менше 1").optional()
+      z.number().optional()
     ),
+  randomizer: z.boolean(),
 });
 
 export type CreateSantaType = z.infer<typeof createSantaSchema>

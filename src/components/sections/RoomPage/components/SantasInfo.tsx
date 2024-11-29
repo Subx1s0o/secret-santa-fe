@@ -10,16 +10,16 @@ export default function SantasInfo({ santa }: { santa: Room }) {
         className={cn(
           'max-w-[500px] overflow-hidden text-ellipsis text-nowrap text-xl',
           {
-            'max-w-[300px]': santa.limit
+            'max-w-[300px]': santa.limit && santa.limit > 0
           }
         )}>
         {santa.title}
       </h1>
-      {santa.limit && (
+      {santa.limit && santa.limit > 0 ? (
         <p className='absolute left-1/2 -translate-x-1/2 text-md'>
           Грошове обмеження - {santa.limit}грн
         </p>
-      )}
+      ) : null}
       <SantaCopyingLinkButton
         className='text-md text-blue'
         initialText='Скопіювати посилання санти'

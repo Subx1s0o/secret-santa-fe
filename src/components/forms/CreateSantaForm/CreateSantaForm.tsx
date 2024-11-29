@@ -8,6 +8,7 @@ import Button from '@/components/ui/Button'
 import Input from '../Input'
 import { createSantaSchema, CreateSantaType } from '../schemas/createSanta'
 import CheckboxLimit from './CheckboxLimit'
+import CheckboxRandomizer from './CheckboxRandomizer'
 
 export default function CreateSantaForm({
   onSubmit
@@ -32,12 +33,17 @@ export default function CreateSantaForm({
         placeholder='Назва'
         control={control}
         name='title'
-        className='mx-[35px] w-[90%]'
+        containerClassName='mx-[35px] w-[90%]'
       />
       <p className='text-lg'>
         Можете встановити обмеження на вартість подарунків
       </p>
-      <CheckboxLimit control={control} />
+      <div className='flex flex-col items-center'>
+        <div className='relative flex flex-col gap-5'>
+          <CheckboxRandomizer control={control} />
+          <CheckboxLimit control={control} />
+        </div>
+      </div>
       <Button
         type='submit'
         variant='filled'

@@ -21,6 +21,7 @@
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
+     "tailwindcss/enforces-negative-arbitrary-values": "off",
     "tailwindcss/classnames-order": "off",
     "@next/next/no-head-element": "off",
     "react/react-in-jsx-scope": "off",

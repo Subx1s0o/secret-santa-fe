@@ -8,6 +8,7 @@ type InputProps = ComponentProps<'input'> & {
   name: string
   label?: string
   className?: string
+  containerClassName?: string
 }
 
 export default function Input({
@@ -15,6 +16,7 @@ export default function Input({
   control,
   label,
   className,
+  containerClassName,
   ...inputProps
 }: InputProps) {
   const {
@@ -24,7 +26,7 @@ export default function Input({
   return (
     <div className='flex flex-col gap-1'>
       {label && <label>{label}</label>}
-      <div className='relative'>
+      <div className={cn('relative', containerClassName)}>
         <input
           {...control.register(name)}
           {...inputProps}
@@ -33,12 +35,14 @@ export default function Input({
             transition-colors placeholder:text-grey focus-visible:border-blue ${className}`
           )}
         />
+        {errors[name] && (
+          <div className='ml-[14px] mt-2'>
+            <p className='text-md text-red'>
+              {errors[name].message?.toString()}
+            </p>
+          </div>
+        )}
       </div>
-      {errors[name] && (
-        <div className='ml-[14px] mt-1'>
-          <p className='text-md text-red'>{errors[name].message?.toString()}</p>
-        </div>
-      )}
     </div>
   )
 }
