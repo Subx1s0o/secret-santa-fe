@@ -13,7 +13,7 @@ export type Room = {
   id: string
   title: string
   owner: string
-  limit: number
+  limit?: number
   url: string
   users: RoomUser[]
 }

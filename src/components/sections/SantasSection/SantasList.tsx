@@ -24,8 +24,10 @@ export default function SantasList() {
               className='flex items-center justify-between pb-[10px] pl-2 pt-2'
               href={`rooms/${room.id}`}>
               <div className='flex items-center gap-2'>
-                <span className='text-md'>{index + 1}</span>
-                <p className='text-md'>{room.title}</p>
+                <span className='text-md'>{index + 1}.</span>
+                <p className='max-w-[220px] overflow-hidden text-ellipsis text-nowrap text-md'>
+                  {room.title}
+                </p>
               </div>
 
               <p className='pr-5 text-sm text-blue'> Детальніше</p>
