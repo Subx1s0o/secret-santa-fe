@@ -7,7 +7,7 @@ export const SignInSchema = z.object({
 
 export const SignUpSchema = SignInSchema.extend({
   name: z.string().min(1, 'Імʼя не може бути порожнім'),
-  password: z.string().min(7, 'Пароль має юути більшим 5 символів')
+  password: z.string().min(7, 'Пароль має юути більшим 7 символів')
 })
 
 export type SignInType = z.infer<typeof SignInSchema>
