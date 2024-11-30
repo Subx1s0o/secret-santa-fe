@@ -14,8 +14,16 @@ export function useRandomIndex() {
     setRandomIndex(null)
   }
 
-  const randomize = useCallback((indices: number[], delay: number, users: any[]) => {
+  const randomize = useCallback((indices: number[], delay: number, users: RoomUser[]) => {
     if (intervalRef.current || timeoutRef.current) return // Запобігаємо повторному запуску
+
+    // Якщо масив містить лише один елемент, одразу вибираємо його
+    if (indices.length === 1) {
+      const singleIndex = indices[0]
+      setRandomIndex(singleIndex)
+      setSelectedUser(users[singleIndex])
+      return
+    }
 
     // Обнуляємо вибраного користувача перед початком
     setSelectedUser(null)

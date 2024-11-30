@@ -16,9 +16,10 @@ export default function SantaPopup({
 }) {
   const { socket } = useSantaSocketStore()
   const [open, setOpen] = useState(true)
+
   const checkedStatus = () => {
     setOpen(false)
-    socket?.emit('checked-status', roomId, user.id)
+    socket?.emit('checked-status', { roomId, userId: user.id })
   }
   return (
     <Popup

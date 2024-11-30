@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { memo, useState } from 'react'
 
 interface SantaCopyingLinkButtonProps {
   link: string
@@ -8,7 +8,7 @@ interface SantaCopyingLinkButtonProps {
   className: string
 }
 
-export default function SantaCopyingLinkButton({
+function SantaCopyingLinkButton({
   link,
   initialText,
   className
@@ -31,3 +31,5 @@ export default function SantaCopyingLinkButton({
     </button>
   )
 }
+
+export default memo(SantaCopyingLinkButton)
