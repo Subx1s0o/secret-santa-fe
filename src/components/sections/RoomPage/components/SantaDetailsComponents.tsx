@@ -7,6 +7,7 @@ import { useRandomIndex } from '@/hooks/useRandomIndex'
 
 import 'reactjs-popup/dist/index.css'
 
+import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 import MembersList from './SantaMembersList/MembersList'
@@ -14,6 +15,7 @@ import SantaMembersHeader from './SantaMembersList/SantaMembersHeader'
 import SantasRandomizer from './SantasRandomizer'
 
 const SantaPopup = dynamic(() => import('./SantaPopup'), { ssr: false })
+
 export default function SantaDetailsComponents({
   session,
   santa
@@ -22,17 +24,24 @@ export default function SantaDetailsComponents({
   session: string | null
 }) {
   const indicesWithFalseStatus = useFilteredUserIndices(santa)
-
+  const [open, setOpen] = useState(true)
   const { randomIndex, selectedUser, randomize, reset } = useRandomIndex()
-  console.log(selectedUser)
+
+  useEffect(() => {
+    reset()
+  }, [santa])
+
   return (
     <div className='mb-2 py-3'>
       <div className='mb-10'>
         <SantaMembersHeader />
         <MembersList
+          selectedUser={selectedUser}
+          reset={reset}
           session={session}
           santa={santa}
           randomIndex={randomIndex}
+          indicesWithFalseStatus={indicesWithFalseStatus}
         />
       </div>
       <div className='flex justify-end'>
@@ -48,6 +57,8 @@ export default function SantaDetailsComponents({
 
       {selectedUser && (
         <SantaPopup
+          open={open}
+          setOpen={setOpen}
           roomId={santa?.id}
           reset={reset}
           user={selectedUser}

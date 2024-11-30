@@ -55,7 +55,7 @@ export default function AddressFrom({
             placeholder={errors.address?.message || 'Написати'}
             {...register('address')}
             type='text'
-            className='w-[212px] rounded-[14px] border border-grey bg-white p-[10px] text-sm
+            className='w-[228px] rounded-[14px] border border-grey bg-white p-[10px] text-sm
               outline-none placeholder:text-grey'
           />
         </form>
@@ -72,7 +72,7 @@ export default function AddressFrom({
           }}
           trigger={
             <p
-              className='w-[212px] cursor-pointer overflow-hidden text-ellipsis text-nowrap text-md
+              className='w-[228px] cursor-pointer overflow-hidden text-ellipsis text-nowrap text-md
                 text-grey'>
               {user.addresses[0]?.content || 'Немає адреси'}
             </p>
@@ -87,7 +87,7 @@ export default function AddressFrom({
           </div>
         </Popup>
       ) : (
-        <p className='w-[212px] text-md text-grey'>Приховано Сантою</p>
+        <p className='w-[228px] text-md text-grey'>Приховано Сантою</p>
       )}
     </div>
   )

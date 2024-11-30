@@ -45,7 +45,7 @@ export default function WishForm({
   }
 
   return (
-    <div className='absolute left-[443px] top-1/2 -translate-y-1/2'>
+    <div className='absolute left-[430px] top-1/2 -translate-y-1/2'>
       {user.email === storedUser?.email ? (
         <form
           onSubmit={handleSubmit(onSubmit)}

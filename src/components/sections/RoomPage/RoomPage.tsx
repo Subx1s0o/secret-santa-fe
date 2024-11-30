@@ -30,12 +30,16 @@ export default function RoomComponent({
     socket.emit('connect-room', roomId)
 
     socket.on('room-updated', updatedRoom => {
-      setCurrentRoom(updatedRoom)
+      setCurrentRoom(prevRoom => ({ ...prevRoom, ...updatedRoom }))
+
       toast.success('Санта оновив свої сані')
     })
 
     socket.on('user-updated', updatedRoom => {
-      setCurrentRoom(updatedRoom)
+      setCurrentRoom(prevRoom => ({
+        ...prevRoom,
+        users: [...updatedRoom.users]
+      }))
     })
 
     socket.on('user-updated-message', () => {
@@ -43,6 +47,11 @@ export default function RoomComponent({
     })
 
     socket.on('room-not-updated', error => {
+      toast.error('У Санти проблеми з Санями :(')
+      console.log(error)
+    })
+
+    socket.on('status-not-updated', error => {
       toast.error('У Санти проблеми з Санями :(')
       console.log(error)
     })

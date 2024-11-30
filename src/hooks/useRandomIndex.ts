@@ -22,13 +22,14 @@ export function useRandomIndex() {
       const singleIndex = indices[0]
       setRandomIndex(singleIndex)
       setSelectedUser(users[singleIndex])
+      
       return
     }
 
     // Обнуляємо вибраного користувача перед початком
     setSelectedUser(null)
 
-    let availableIndices = [...indices] // Копія для роботи
+    const availableIndices = [...indices] // Копія для роботи
     let lastSelectedIndex: number | null = null
 
     // Починаємо інтервал для вибору випадкових індексів
@@ -36,6 +37,7 @@ export function useRandomIndex() {
       if (availableIndices.length === 0) {
         clearInterval(intervalRef.current!) // Зупиняємо, якщо всі індекси використані
         intervalRef.current = null
+        
         return
       }
 

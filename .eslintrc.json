@@ -34,13 +34,7 @@
         "format": ["PascalCase"]
       }
     ],
-    "react/boolean-prop-naming": [
-      "error",
-      {
-        "rule": "^is[A-Z]([A-Za-z0-9]?)+",
-        "validateNested": true
-      }
-    ],
+   
     "react/destructuring-assignment": [
       "error",
       "always",

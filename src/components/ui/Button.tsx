@@ -18,21 +18,29 @@ export default function Button({
   variant,
   href,
   className,
+  disabled,
   ...buttonProps
 }: ButtonProps) {
+  const baseClass = 'block rounded-[20px] px-6 py-3 text-lg'
+
+  const variantClasses = cn({
+    'bg-blue-gradient text-white': variant === 'filled' && !disabled,
+    'border border-blue text-blue': variant === 'bordered' && !disabled,
+    'bg-gray-300 text-gray-500 cursor-not-allowed': disabled
+  })
+
   if (activate === 'button') {
     return (
       <button
         type={type}
         {...buttonProps}
-        className={cn(`block rounded-[20px] px-6 py-3 text-lg ${className}`, {
-          'bg-blue-gradient text-white': variant === 'filled',
-          'border border-blue text-blue': variant === 'bordered'
-        })}>
+        disabled={disabled}
+        className={cn(baseClass, variantClasses, className)}>
         {children}
       </button>
     )
   }
+
   if (activate === 'link') {
     if (!href) {
       throw new Error(
@@ -43,10 +51,7 @@ export default function Button({
     return (
       <Link
         href={href}
-        className={cn(`block rounded-[20px] px-6 py-3 text-lg ${className}`, {
-          'bg-blue-gradient text-white': variant === 'filled',
-          'border border-blue text-blue': variant === 'bordered'
-        })}>
+        className={cn(baseClass, variantClasses, className)}>
         {children}
       </Link>
     )

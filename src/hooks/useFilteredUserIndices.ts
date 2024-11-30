@@ -4,6 +4,7 @@ import { useUser } from './useUser';
 
 const useFilteredUserIndices = (santa: Room | undefined) => {
     const me = useUser()
+    
   return useMemo(() => {
     return santa?.users
       .map((user, index) => {
