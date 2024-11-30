@@ -48,6 +48,7 @@ export default function SantaDetailsComponents({
 
       {selectedUser && (
         <SantaPopup
+          roomId={santa?.id}
           reset={reset}
           user={selectedUser}
         />

@@ -30,7 +30,7 @@ export default function MembersList({
           )}>
           <SantaCopyingLinkButton
             link={user.name}
-            initialText={`${index + 1}. ${user.name}`}
+            initialText={`${user.statusses[0]?.status ? 'true' : 'false'}. ${user.name}`}
             className='max-w-[200px] gap-2 overflow-hidden text-ellipsis text-nowrap text-md'
           />
           <SantaCopyingLinkButton
