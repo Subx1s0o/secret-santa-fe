@@ -26,7 +26,7 @@ export default function SantaDetailsComponents({
   const { randomIndex, selectedUser, randomize, reset } = useRandomIndex()
   console.log(selectedUser)
   return (
-    <div className='mb-2 px-[18px] py-3'>
+    <div className='mb-2 py-3'>
       <div className='mb-10'>
         <SantaMembersHeader />
         <MembersList

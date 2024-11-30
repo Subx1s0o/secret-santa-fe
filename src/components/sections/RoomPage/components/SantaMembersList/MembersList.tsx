@@ -2,6 +2,7 @@
 
 import cn from '@/lib/cn'
 import { Room } from '@/types/room'
+import Image from 'next/image'
 
 import AddressForm from '@/components/forms/WishAndAddressForms/AddressForm'
 import WishForm from '@/components/forms/WishAndAddressForms/WishForm'
@@ -17,7 +18,7 @@ export default function MembersList({
   randomIndex: number | null
 }) {
   return (
-    <ul className='flex max-h-[400px] flex-col gap-2 overflow-y-auto overscroll-contain'>
+    <ul className='flex max-h-[400px] flex-col gap-2 overflow-y-auto overscroll-contain px-[18px]'>
       {santa?.users.map((user, index) => (
         <li
           key={user.email}
@@ -51,6 +52,25 @@ export default function MembersList({
             user={user}
             random={santa.randomizer}
           />
+
+          {index === randomIndex && (
+            <div>
+              <Image
+                src='/gift.webp'
+                width={50}
+                alt='gift'
+                className='absolute -left-[25px] -top-[3px] z-10'
+                height={50}
+              />
+              <Image
+                src='/gift.webp'
+                width={50}
+                alt='gift'
+                className='absolute -right-[25px] -top-[3px] z-10'
+                height={50}
+              />
+            </div>
+          )}
         </li>
       ))}
     </ul>

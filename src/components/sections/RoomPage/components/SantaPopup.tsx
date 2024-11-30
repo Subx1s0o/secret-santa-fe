@@ -9,7 +9,7 @@ export default function SantaPopup({
   reset: () => void
 }) {
   const handleClose = () => {
-    reset() // Викликаємо reset вручну, коли закриваємо Popup
+    reset()
   }
 
   return (
@@ -25,8 +25,6 @@ export default function SantaPopup({
       open={true}
       modal
       onClose={handleClose}>
-      {' '}
-      {/* Перевіряємо, чи закривається Popup */}
       <div className='flex h-full flex-col'>
         <h3 className='mb-3 text-center text-xl'>{user.name}</h3>
         <div className='grid flex-1 grid-rows-2'>
