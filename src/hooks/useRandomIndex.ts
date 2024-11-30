@@ -1,12 +1,18 @@
 'use client'
 
+import { RoomUser } from '@/types/room'
 import { useState, useRef, useCallback } from 'react'
 
 export function useRandomIndex() {
   const [randomIndex, setRandomIndex] = useState<number | null>(null)
-  const [selectedUser, setSelectedUser] = useState<any | null>(null)
+  const [selectedUser, setSelectedUser] = useState<RoomUser | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const reset = () => {
+    setSelectedUser(null)
+    setRandomIndex(null)
+  }
 
   const randomize = useCallback((indices: number[], delay: number, users: any[]) => {
     if (intervalRef.current || timeoutRef.current) return // Запобігаємо повторному запуску
@@ -49,6 +55,7 @@ export function useRandomIndex() {
   }, [])
 
   return {
+    reset,
     randomIndex,
     selectedUser,
     randomize

@@ -17,7 +17,7 @@ export default function SantasRandomizer({
         disabled={array.length === 0}
         variant='filled'
         onClick={() => randomize(array, 150)}>
-        Вибрати випадкового користувача
+        Пошарудіти Подарунками
       </Button>
     </div>
   )

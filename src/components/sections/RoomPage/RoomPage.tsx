@@ -27,16 +27,18 @@ export default function RoomComponent({
     const socket = io(process.env.NEXT_PUBLIC_API_URL)
     setSocket(socket)
 
-    socket.on('connect', () => {
-      console.log('Connected to WebSocket server')
-    })
-
     socket.emit('connect-room', roomId)
-
-    socket.on('room', room => console.log(room))
 
     socket.on('room-updated', updatedRoom => {
       setCurrentRoom(updatedRoom)
+      toast.success('Санта оновив свої сані')
+    })
+
+    socket.on('user-updated', updatedRoom => {
+      setCurrentRoom(updatedRoom)
+    })
+
+    socket.on('user-updated-message', () => {
       toast.success('Санта оновив свої сані')
     })
 
@@ -47,8 +49,7 @@ export default function RoomComponent({
 
     return () => {
       socket.off('connect-room')
-      socket.off('user-joined')
-      socket.off('room')
+      socket.off('user-updated')
       socket.off('room-updated')
       socket.off('room-not-updated')
       socket.disconnect()

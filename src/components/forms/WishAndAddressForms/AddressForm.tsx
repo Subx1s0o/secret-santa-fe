@@ -6,8 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import dynamic from 'next/dynamic'
 import { useForm } from 'react-hook-form'
 
-import 'reactjs-popup/dist/index.css'
-
 import { useUser } from '@/hooks/useUser'
 
 import { AddressSchema, AddressType } from '../schemas/address'

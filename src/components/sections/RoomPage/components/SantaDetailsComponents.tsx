@@ -2,13 +2,18 @@
 
 import { Room } from '@/types/room'
 
+import useFilteredUserIndices from '@/hooks/useFilteredUserIndices'
 import { useRandomIndex } from '@/hooks/useRandomIndex'
-import { useUser } from '@/hooks/useUser'
+
+import 'reactjs-popup/dist/index.css'
+
+import dynamic from 'next/dynamic'
 
 import MembersList from './SantaMembersList/MembersList'
 import SantaMembersHeader from './SantaMembersList/SantaMembersHeader'
 import SantasRandomizer from './SantasRandomizer'
 
+const SantaPopup = dynamic(() => import('./SantaPopup'), { ssr: false })
 export default function SantaDetailsComponents({
   session,
   santa
@@ -16,42 +21,36 @@ export default function SantaDetailsComponents({
   santa: Room | undefined
   session: string | null
 }) {
-  const me = useUser()
+  const indicesWithFalseStatus = useFilteredUserIndices(santa)
 
-  // Отримуємо індекси користувачів, у яких статус = false та виключаємо себе
-  const indicesWithFalseStatus =
-    santa?.users
-      .map((user, index) => {
-        return user.statusses[0]?.status === false && user.id !== me?.id
-          ? index
-          : -1
-      })
-      .filter(index => index !== -1) || []
-
-  const { randomIndex, selectedUser, randomize } = useRandomIndex()
+  const { randomIndex, selectedUser, randomize, reset } = useRandomIndex()
   console.log(selectedUser)
   return (
     <div className='mb-2 px-[18px] py-3'>
-      <SantaMembersHeader />
-      <MembersList
-        session={session}
-        santa={santa}
-        randomIndex={randomIndex}
-      />
-      {santa?.randomizer && (
-        <SantasRandomizer
-          randomize={() => randomize(indicesWithFalseStatus, 150, santa.users)} // Передаємо користувачів для визначення обраного
-          array={indicesWithFalseStatus}
+      <div className='mb-10'>
+        <SantaMembersHeader />
+        <MembersList
+          session={session}
+          santa={santa}
+          randomIndex={randomIndex}
         />
-      )}
-
-      {/* Виведення вибраного користувача */}
+      </div>
+      <div className='flex justify-end'>
+        {santa?.randomizer && (
+          <SantasRandomizer
+            randomize={() =>
+              randomize(indicesWithFalseStatus, 150, santa.users)
+            }
+            array={indicesWithFalseStatus}
+          />
+        )}
+      </div>
 
       {selectedUser && (
-        <div>
-          <h3>Обраний користувач:</h3>
-          <p>{selectedUser.name}</p>
-        </div>
+        <SantaPopup
+          reset={reset}
+          user={selectedUser}
+        />
       )}
     </div>
   )
