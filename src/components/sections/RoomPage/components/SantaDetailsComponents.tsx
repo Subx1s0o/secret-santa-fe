@@ -24,19 +24,24 @@ export default function SantaDetailsComponents({
   session: string | null
 }) {
   const indicesWithFalseStatus = useFilteredUserIndices(santa)
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const { randomIndex, selectedUser, randomize, reset } = useRandomIndex()
 
   useEffect(() => {
     reset()
   }, [santa])
 
+  useEffect(() => {
+    if (selectedUser) {
+      setOpen(true)
+    }
+  }, [selectedUser])
+
   return (
     <div className='mb-2 py-3'>
       <div className='mb-10'>
         <SantaMembersHeader />
         <MembersList
-          selectedUser={selectedUser}
           reset={reset}
           session={session}
           santa={santa}
@@ -44,7 +49,7 @@ export default function SantaDetailsComponents({
           indicesWithFalseStatus={indicesWithFalseStatus}
         />
       </div>
-      <div className='flex justify-end'>
+      <div className='mb-10 flex justify-end'>
         {santa?.randomizer && (
           <SantasRandomizer
             randomize={() =>
@@ -54,6 +59,10 @@ export default function SantaDetailsComponents({
           />
         )}
       </div>
+      <p className='text-center text-md'>
+        Примітка: якщо ви хочете самостійно обрати учасника, натисніть на
+        доступний блок поруч з ім’ям людини
+      </p>
 
       {selectedUser && (
         <SantaPopup

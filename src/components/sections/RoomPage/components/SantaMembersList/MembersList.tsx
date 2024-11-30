@@ -1,5 +1,5 @@
 import cn from '@/lib/cn'
-import { Room, RoomUser } from '@/types/room'
+import { Room } from '@/types/room'
 import Image from 'next/image'
 
 import AddressForm from '@/components/forms/WishAndAddressForms/AddressForm'
@@ -12,14 +12,14 @@ export default function MembersList({
   santa,
   session,
   randomIndex,
-  selectedUser,
+
   reset,
   indicesWithFalseStatus
 }: {
   santa: Room | undefined
   session: string | null
   randomIndex: number | null
-  selectedUser: RoomUser | null
+
   reset: () => void
   indicesWithFalseStatus: number[]
 }) {
@@ -38,7 +38,6 @@ export default function MembersList({
             <div className='flex items-center gap-2'>
               <UserGiftCheckbox
                 reset={reset}
-                selectedUser={selectedUser}
                 status={user.statusses[0].status}
                 userEmail={user.email}
                 roomId={santa.id}

@@ -69,7 +69,7 @@ export default function SantaPopup({
             variant='filled'
             className='text-md font-bold'
             onClick={checkedStatus}>
-            Взятися за Поадрунок
+            Потішити Подаруночком
           </Button>
         </div>
       </div>

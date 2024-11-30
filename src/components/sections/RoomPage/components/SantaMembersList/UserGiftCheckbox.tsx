@@ -13,7 +13,7 @@ export default function UserGiftCheckbox({
   status,
   userEmail,
   roomId,
-  selectedUser,
+
   reset,
   users,
   indicesWithFalseStatus,
@@ -23,7 +23,6 @@ export default function UserGiftCheckbox({
   userEmail: string
   roomId: string
   users: RoomUser[]
-  selectedUser: RoomUser | null
   reset: () => void
   indicesWithFalseStatus: number[]
   userIndex: number
@@ -32,12 +31,11 @@ export default function UserGiftCheckbox({
   const [choosedUser, setChoosedUser] = useState<RoomUser | null>(null)
   const storedUser = useUser()
 
+  const chosen = useChoosedUser(users, indicesWithFalseStatus, userIndex)
   const handleClick = () => {
     if (!status) {
-      const chosen = useChoosedUser(users, indicesWithFalseStatus, userIndex)
       setChoosedUser(chosen)
       setOpen(true)
-      console.log(choosedUser)
     }
   }
 

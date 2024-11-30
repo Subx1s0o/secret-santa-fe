@@ -46,14 +46,8 @@ export default function RoomComponent({
       toast.success('Санта оновив свої сані')
     })
 
-    socket.on('room-not-updated', error => {
+    socket.on('not-updated', () => {
       toast.error('У Санти проблеми з Санями :(')
-      console.log(error)
-    })
-
-    socket.on('status-not-updated', error => {
-      toast.error('У Санти проблеми з Санями :(')
-      console.log(error)
     })
 
     return () => {
