@@ -6,7 +6,7 @@ import { Room } from '@/types/room'
 import { toast } from 'react-toastify'
 import io from 'socket.io-client'
 
-import SantaMembersList from './components/SantaMembersList/SantaMembersList'
+import SantaDetails from './components/SantaDetails'
 import SantaInfo from './components/SantasInfo'
 
 interface RoomComponentProps {
@@ -63,7 +63,7 @@ export default function RoomComponent({
           bg-primary-pink px-[80px] py-[50px]'>
         <div className='w-[1065px] rounded-[20px] bg-white p-8'>
           <SantaInfo santa={currentRoom} />
-          <SantaMembersList
+          <SantaDetails
             session={session}
             santa={currentRoom}
           />

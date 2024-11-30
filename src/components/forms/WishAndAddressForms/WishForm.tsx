@@ -18,9 +18,15 @@ interface WishFormProps {
   user: RoomUser
   roomId: string
   token: string | null
+  random: boolean
 }
 
-export default function WishForm({ user, roomId, token }: WishFormProps) {
+export default function WishForm({
+  user,
+  roomId,
+  token,
+  random
+}: WishFormProps) {
   const storedUser = useUser()
   const {
     handleSubmit,
@@ -55,7 +61,7 @@ export default function WishForm({ user, roomId, token }: WishFormProps) {
               outline-none placeholder:text-grey'
           />
         </form>
-      ) : (
+      ) : !random ? (
         <Popup
           modal
           contentStyle={{
@@ -82,6 +88,8 @@ export default function WishForm({ user, roomId, token }: WishFormProps) {
             </p>
           </div>
         </Popup>
+      ) : (
+        <p className='w-[212px] text-md text-grey'>Приховано Сантою</p>
       )}
     </div>
   )

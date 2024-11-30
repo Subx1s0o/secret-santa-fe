@@ -18,9 +18,15 @@ interface AddressFromProps {
   user: RoomUser
   roomId: string
   token: string | null
+  random: boolean
 }
 
-export default function AddressFrom({ user, roomId, token }: AddressFromProps) {
+export default function AddressFrom({
+  user,
+  roomId,
+  token,
+  random
+}: AddressFromProps) {
   const storedUser = useUser()
   const {
     handleSubmit,
@@ -55,7 +61,7 @@ export default function AddressFrom({ user, roomId, token }: AddressFromProps) {
               outline-none placeholder:text-grey'
           />
         </form>
-      ) : (
+      ) : !random ? (
         <Popup
           modal
           contentStyle={{
@@ -82,6 +88,8 @@ export default function AddressFrom({ user, roomId, token }: AddressFromProps) {
             </p>
           </div>
         </Popup>
+      ) : (
+        <p className='w-[212px] text-md text-grey'>Приховано Сантою</p>
       )}
     </div>
   )

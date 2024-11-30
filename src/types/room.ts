@@ -1,4 +1,5 @@
 export type RoomUser = {
+  id: string
   name: string
   email: string
   wishes: Array<{
