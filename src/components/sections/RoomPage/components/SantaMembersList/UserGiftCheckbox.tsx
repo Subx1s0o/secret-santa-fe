@@ -52,6 +52,7 @@ export default function UserGiftCheckbox({
         )}>
         {status ? (
           <Image
+            priority
             src='/gift.svg'
             width={16}
             alt=''

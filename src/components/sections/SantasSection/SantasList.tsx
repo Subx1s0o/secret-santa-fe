@@ -100,14 +100,12 @@ export default function SantasList() {
             key={room.id}>
             <div className='flex items-center gap-2'>
               <span className='text-md'>{index + 1}.</span>
-              <p className='max-w-[220px] overflow-hidden text-ellipsis text-nowrap text-md'>
+              <p className='max-w-[150px] overflow-hidden text-ellipsis text-nowrap text-md'>
                 {room.title}
               </p>
             </div>
             <Link href={`rooms/${room.id}`}>
-              <p
-                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pr-5 text-sm
-                  text-blue'>
+              <p className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-blue'>
                 Детальніше
               </p>
             </Link>

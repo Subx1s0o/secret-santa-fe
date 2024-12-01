@@ -72,6 +72,7 @@ export default function MembersList({
             {index === randomIndex && (
               <div>
                 <Image
+                  priority
                   src='/gift.webp'
                   width={50}
                   alt='gift'
@@ -79,6 +80,7 @@ export default function MembersList({
                   height={50}
                 />
                 <Image
+                  priority
                   src='/gift.webp'
                   width={50}
                   alt='gift'
