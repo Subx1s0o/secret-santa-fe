@@ -2,7 +2,6 @@ import { useState } from 'react'
 import cn from '@/lib/cn'
 import { RoomUser } from '@/types/room'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 
 import { useChoosedUser } from '@/hooks/useChoosedUser'
 import { useUser } from '@/hooks/useUser'
@@ -51,8 +50,8 @@ export default function UserGiftCheckbox({
           }
         )}>
         {status ? (
-          <Image
-            priority
+          <img
+            loading='eager'
             src='/gift.svg'
             width={16}
             alt=''

@@ -71,16 +71,16 @@ export default function MembersList({
             />
             {index === randomIndex && (
               <div>
-                <Image
-                  priority
+                <img
+                  loading='eager'
                   src='/gift.webp'
                   width={50}
                   alt='gift'
                   className='absolute -left-[25px] -top-[3px] z-10'
                   height={50}
                 />
-                <Image
-                  priority
+                <img
+                  loading='eager'
                   src='/gift.webp'
                   width={50}
                   alt='gift'
