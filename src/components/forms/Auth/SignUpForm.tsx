@@ -22,8 +22,8 @@ export default function SignUpForm() {
   async function onSubmit(data: SignUpType) {
     try {
       await register(data)
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Щось пішло не так.')
+    } catch {
+      toast.error('Невдалося авторизуватися')
     }
   }
 

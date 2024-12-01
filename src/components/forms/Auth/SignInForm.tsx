@@ -22,8 +22,8 @@ export default function SignInForm() {
   async function onSubmit(data: SignInType) {
     try {
       await login(data)
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Щось пішло не так.')
+    } catch {
+      toast.error('Невдалося авторизуватися, спробуйте ще раз')
     }
   }
 

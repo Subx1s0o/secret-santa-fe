@@ -26,8 +26,8 @@ export default function HelpingFooter() {
       <ToastContainer position='top-center' />
       <div
         onClick={toggleAudio}
-        className='bg-gift fixed bottom-20 left-20 flex h-40 w-40 cursor-pointer items-center
-          justify-center bg-cover'></div>
+        className='fixed bottom-20 left-20 flex size-40 cursor-pointer items-center justify-center
+          bg-gift bg-cover'></div>
       <audio
         ref={audioRef}
         className='invisible'

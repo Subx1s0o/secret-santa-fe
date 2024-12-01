@@ -1,5 +1,6 @@
-import { Room } from "@/types/room"
-import { getSession } from "./getSession"
+import { Room } from '@/types/room'
+
+import { getSession } from './getSession'
 
 export const getRoomById = async (roomId: string): Promise<Room | null> => {
   try {
@@ -9,21 +10,19 @@ export const getRoomById = async (roomId: string): Promise<Room | null> => {
       {
         cache: 'no-cache',
         headers: {
-          Authorization: `Bearer ${session}`,
-        },
+          Authorization: `Bearer ${session}`
+        }
       }
     )
 
     if (!response.ok) {
-
       return null
     }
 
     const room = (await response.json()) as Room
 
     return room
-  } catch  {
-
+  } catch {
     return null
   }
 }

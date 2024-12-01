@@ -81,7 +81,7 @@ export default function WishForm({
             <h3 className='mb-3 w-full text-center text-lg font-bold'>
               Бажання ельфа: {user.name}
             </h3>
-            <p className='text-lg text-grey'>
+            <p className='whitespace-normal break-words text-lg text-grey'>
               {user.wishes[0]?.content || 'Немає бажання'}
             </p>
           </div>

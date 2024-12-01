@@ -6,6 +6,8 @@ import Popup from 'reactjs-popup'
 
 import Button from '@/components/ui/Button'
 
+import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
+
 export default function SantaPopup({
   user,
   reset,
@@ -21,9 +23,16 @@ export default function SantaPopup({
 }) {
   const { socket } = useSantaSocketStore()
 
+  useLockBodyScroll(open)
+
   const checkedStatus = () => {
     setOpen(false)
     socket?.emit('checked-status', { roomId, userId: user?.id })
+  }
+
+  const handleClose = () => {
+    reset()
+    setOpen(false)
   }
 
   return (
@@ -31,28 +40,27 @@ export default function SantaPopup({
       contentStyle={{
         borderRadius: '20px',
         overflowY: 'auto',
-        width: '600px',
-        height: '600px',
-        overscrollBehavior: 'contain',
+        width: '800px',
+        height: '800px',
         padding: '20px'
       }}
       open={open}
       modal
-      onClose={() => reset()}>
+      onClose={handleClose}>
       <div className='flex h-full flex-col'>
         <h3 className='mb-3 text-center text-xl'>{user?.name}</h3>
-        <div className='grid flex-1 grid-rows-2'>
-          <div>
-            <p className='mb-2 text-center text-lg'>Мріє про: </p>
-            <p className='mb-3 text-md'>
+        <div className='mb-5'>
+          <div className='flex h-[300px] flex-col'>
+            <h2 className='mb-2 flex justify-center text-lg'>Мріє про: </h2>
+            <p className='mb-3 overflow-y-auto overscroll-contain whitespace-normal break-words text-md'>
               {user?.wishes[0]?.content || 'Поки бажання немає('}
             </p>
           </div>
-          <div>
-            <p className='mb-3 text-center text-lg'>
+          <div className='flex h-[300px] flex-col'>
+            <h2 className='mb-3 flex justify-center text-lg'>
               Відправляти з Лапландії сюди:
-            </p>
-            <p className='text-md'>
+            </h2>
+            <p className='overflow-y-auto overscroll-contain whitespace-normal break-words text-md'>
               {user?.addresses[0]?.content || 'Поки Адреси немає('}
             </p>
           </div>

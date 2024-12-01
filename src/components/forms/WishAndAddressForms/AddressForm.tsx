@@ -81,7 +81,7 @@ export default function AddressFrom({
             <h3 className='mb-3 w-full text-center text-lg font-bold'>
               Адреса ельфа: {user.name}
             </h3>
-            <p className='text-lg text-grey'>
+            <p className='whitespace-normal break-words text-lg text-grey'>
               {user.addresses[0]?.content || 'Немає адреси'}
             </p>
           </div>

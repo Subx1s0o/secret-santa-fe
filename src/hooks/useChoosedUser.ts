@@ -1,15 +1,17 @@
-import { RoomUser } from "@/types/room";
+import { useMemo } from 'react'
+import { RoomUser } from '@/types/room'
 
 export const useChoosedUser = (
-    users: RoomUser[] | undefined,
-    indicesWithFalseStatus: number[] | undefined,
-    index: number
-  ) => {
-    if (!users || !indicesWithFalseStatus) return null;
-  
+  users: RoomUser[] | undefined,
+  indicesWithFalseStatus: number[] | undefined,
+  index: number
+) => {
+  return useMemo(() => {
+    if (!users || !indicesWithFalseStatus) return null
     if (indicesWithFalseStatus.includes(index)) {
-      return users[index];
+      return users[index]
     }
-  
-    return null;
-  };
+    
+    return null
+  }, [users, indicesWithFalseStatus, index])
+}

@@ -12,7 +12,6 @@ export default function UserGiftCheckbox({
   status,
   userEmail,
   roomId,
-
   reset,
   users,
   indicesWithFalseStatus,
@@ -32,6 +31,7 @@ export default function UserGiftCheckbox({
 
   const chosen = useChoosedUser(users, indicesWithFalseStatus, userIndex)
   const handleClick = () => {
+    setChoosedUser(null)
     if (!status) {
       setChoosedUser(chosen)
       setOpen(true)

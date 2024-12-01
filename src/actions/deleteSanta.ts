@@ -1,8 +1,8 @@
 'use server'
 
 import { Room } from '@/types/room'
-import { getSession } from './getSession'
 
+import { getSession } from './getSession'
 
 export async function deleteSanta(roomId: string) {
   const session = await getSession()
@@ -13,7 +13,7 @@ export async function deleteSanta(roomId: string) {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": `Bearer ${session}`
+          Authorization: `Bearer ${session}`
         }
       }
     )

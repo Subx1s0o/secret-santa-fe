@@ -23,7 +23,7 @@ export default function CreateSantaSection() {
       queryClient.invalidateQueries({ queryKey: ['rooms'] })
     } catch (error: unknown) {
       if (error instanceof Error) {
-        toast.error(error.message || 'Не вдалося створити санту')
+        toast.error('Не вдалося створити санту, спробуй пізніше')
       } else {
         toast.error('Не вдалося створити санту')
       }
