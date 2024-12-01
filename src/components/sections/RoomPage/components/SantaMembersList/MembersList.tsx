@@ -1,6 +1,5 @@
 import cn from '@/lib/cn'
 import { Room } from '@/types/room'
-import Image from 'next/image'
 
 import AddressForm from '@/components/forms/WishAndAddressForms/AddressForm'
 import WishForm from '@/components/forms/WishAndAddressForms/WishForm'
