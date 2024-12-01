@@ -17,7 +17,8 @@ export default function SantasInfo({ santa }: { santa: Room }) {
       </h1>
       {santa.limit && santa.limit > 0 ? (
         <p className='absolute left-1/2 -translate-x-1/2 text-md'>
-          Грошове обмеження - {santa.limit}грн
+          Грошове обмеження - <span className='font-bold'>{santa.limit}</span>{' '}
+          грн
         </p>
       ) : null}
       <SantaCopyingLinkButton

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useSantaSocketStore } from '@/stores/useSantaSocketStore'
 import { Room } from '@/types/room'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import io from 'socket.io-client'
 
@@ -22,7 +23,7 @@ export default function RoomComponent({
 }: RoomComponentProps) {
   const [currentRoom, setCurrentRoom] = useState<Room>(room)
   const { setSocket } = useSantaSocketStore()
-
+  const router = useRouter()
   useEffect(() => {
     const socket = io(process.env.NEXT_PUBLIC_API_URL)
     setSocket(socket)
@@ -50,7 +51,14 @@ export default function RoomComponent({
       toast.error('У Санти проблеми з Санями :(')
     })
 
+    socket.on('room-deleted', () => {
+      router.push('/rooms')
+    })
+
     return () => {
+      socket.off('user-updated-message')
+      socket.off('not-updated')
+      socket.off('room-deleted')
       socket.off('connect-room')
       socket.off('user-updated')
       socket.off('room-updated')

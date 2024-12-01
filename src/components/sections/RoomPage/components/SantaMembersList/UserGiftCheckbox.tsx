@@ -54,7 +54,7 @@ export default function UserGiftCheckbox({
           <Image
             src='/gift.svg'
             width={16}
-            alt='gift'
+            alt=''
             height={16}
           />
         ) : (
