@@ -5,7 +5,7 @@ import './globals.css'
 import { Anonymous_Pro } from 'next/font/google'
 
 import Header from '@/components/common/Header'
-import ToastFooter from '@/components/common/ToastFooter'
+import HelpingFooter from '@/components/common/HelpingFooter'
 import Providers from '@/components/providers/Providers'
 
 export const metadata: Metadata = {
@@ -31,9 +31,8 @@ export default function RootLayout({
 
         <main className='relative h-full bg-santa bg-cover'>
           <Providers>{children}</Providers>
+          <HelpingFooter />
         </main>
-
-        <ToastFooter />
       </body>
     </html>
   )

@@ -32,6 +32,7 @@ export default {
 
       },
       backgroundImage: {
+        gift: "url('/gift.webp')",
         santa: "url('/santa.avif')",
         "blue-gradient": "linear-gradient(90deg, #0080FF 0%, #66B3FF 100%)"
       },
