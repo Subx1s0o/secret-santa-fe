@@ -2,6 +2,9 @@ export type RoomUser = {
   id: string
   name: string
   email: string
+  choosed: Array<{
+    choosed: boolean
+  }>
   wishes: Array<{
     content: string
   }>

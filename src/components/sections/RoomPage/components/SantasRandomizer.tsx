@@ -6,15 +6,17 @@ import Button from '@/components/ui/Button'
 
 export default function SantasRandomizer({
   randomize,
-  array
+  array,
+  disabled
 }: {
+  disabled: boolean
   randomize: (array: number[], delay: number) => void
   array: number[]
 }) {
   return (
     <div>
       <Button
-        disabled={array.length === 0}
+        disabled={disabled}
         variant='filled'
         onClick={() => randomize(array, 150)}>
         Пошарудіти Подарунками

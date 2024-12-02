@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup'
 import Button from '@/components/ui/Button'
 
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
+import { useUser } from '@/hooks/useUser'
 
 export default function SantaPopup({
   user,
@@ -22,12 +23,12 @@ export default function SantaPopup({
   setOpen: (bool: boolean) => void
 }) {
   const { socket } = useSantaSocketStore()
-
+  const me = useUser()
   useLockBodyScroll(open)
 
   const checkedStatus = () => {
     setOpen(false)
-    socket?.emit('checked-status', { roomId, userId: user?.id })
+    socket?.emit('checked-status', { roomId, user: me?.id, userId: user?.id })
   }
 
   const handleClose = () => {

@@ -11,14 +11,14 @@ export default function MembersList({
   santa,
   session,
   randomIndex,
-
+  disableChoosingUser,
   reset,
   indicesWithFalseStatus
 }: {
   santa: Room | undefined
   session: string | null
   randomIndex: number | null
-
+  disableChoosingUser: boolean
   reset: () => void
   indicesWithFalseStatus: number[]
 }) {
@@ -45,6 +45,7 @@ export default function MembersList({
                 users={santa.users}
                 indicesWithFalseStatus={indicesWithFalseStatus}
                 userIndex={index}
+                disabled={disableChoosingUser}
               />
               <SantaCopyingLinkButton
                 link={user.name}
@@ -77,7 +78,7 @@ export default function MembersList({
                   src='/gift.webp'
                   width={50}
                   alt='gift'
-                  className='absolute -left-[25px] -top-[3px] z-10'
+                  className='absolute -left-[5px] -top-[3px] z-10'
                   height={50}
                 />
                 <img
@@ -85,7 +86,7 @@ export default function MembersList({
                   src='/gift.webp'
                   width={50}
                   alt='gift'
-                  className='absolute -right-[25px] -top-[3px] z-10'
+                  className='absolute -right-[5px] -top-[3px] z-10'
                   height={50}
                 />
               </div>

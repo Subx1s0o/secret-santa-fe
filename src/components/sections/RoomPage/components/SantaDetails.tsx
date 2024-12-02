@@ -10,6 +10,9 @@ import 'reactjs-popup/dist/index.css'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 
+import useIsButtonDisabled from '@/hooks/useIsButtonDisabled'
+import { useUser } from '@/hooks/useUser'
+
 import MembersList from './SantaMembersList/MembersList'
 import SantaMembersHeader from './SantaMembersList/SantaMembersHeader'
 import SantasRandomizer from './SantasRandomizer'
@@ -26,7 +29,7 @@ export default function SantaDetails({
   const indicesWithFalseStatus = useFilteredUserIndices(santa)
   const [open, setOpen] = useState(false)
   const { randomIndex, selectedUser, randomize, reset } = useRandomIndex()
-
+  const me = useUser()
   useEffect(() => {
     reset()
   }, [santa])
@@ -37,11 +40,14 @@ export default function SantaDetails({
     }
   }, [selectedUser])
 
+  const isAlredyChoosedSomeone = useIsButtonDisabled(santa, me?.id)
+
   return (
     <div className='mb-2 py-3'>
       <div className='mb-10'>
         <SantaMembersHeader />
         <MembersList
+          disableChoosingUser={isAlredyChoosedSomeone}
           reset={reset}
           session={session}
           santa={santa}
@@ -54,6 +60,9 @@ export default function SantaDetails({
           <SantasRandomizer
             randomize={() =>
               randomize(indicesWithFalseStatus, 150, santa.users)
+            }
+            disabled={
+              indicesWithFalseStatus.length === 0 || isAlredyChoosedSomeone
             }
             array={indicesWithFalseStatus}
           />

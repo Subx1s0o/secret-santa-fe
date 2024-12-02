@@ -2,6 +2,7 @@ import { useState } from 'react'
 import cn from '@/lib/cn'
 import { RoomUser } from '@/types/room'
 import dynamic from 'next/dynamic'
+import { toast } from 'react-toastify'
 
 import { useChoosedUser } from '@/hooks/useChoosedUser'
 import { useUser } from '@/hooks/useUser'
@@ -15,8 +16,10 @@ export default function UserGiftCheckbox({
   reset,
   users,
   indicesWithFalseStatus,
-  userIndex
+  userIndex,
+  disabled
 }: {
+  disabled: boolean
   status: boolean
   userEmail: string
   roomId: string
@@ -32,6 +35,11 @@ export default function UserGiftCheckbox({
   const chosen = useChoosedUser(users, indicesWithFalseStatus, userIndex)
   const handleClick = () => {
     setChoosedUser(null)
+    if (disabled) {
+      toast.error('Ви вже обрали когось, вдруге неможна')
+
+      return
+    }
     if (!status) {
       setChoosedUser(chosen)
       setOpen(true)
@@ -54,13 +62,15 @@ export default function UserGiftCheckbox({
             <use href='/sprite.svg#icon-gift' />
           </svg>
         ) : (
-          <SantaPopup
-            open={open}
-            setOpen={setOpen}
-            user={choosedUser}
-            reset={reset}
-            roomId={roomId}
-          />
+          !disabled && (
+            <SantaPopup
+              open={open}
+              setOpen={setOpen}
+              user={choosedUser}
+              reset={reset}
+              roomId={roomId}
+            />
+          )
         )}
       </button>
     )
