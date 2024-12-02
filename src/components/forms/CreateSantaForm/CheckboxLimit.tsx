@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react'
 import cn from '@/lib/cn'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { Control, useController } from 'react-hook-form'
-import { IoCheckmark } from 'react-icons/io5'
-import { MdOutlineAttachMoney } from 'react-icons/md'
 
 export default function CheckboxLimit({ control }: { control: Control<any> }) {
   const [checked, setChecked] = useState<boolean>(true)
@@ -34,7 +32,9 @@ export default function CheckboxLimit({ control }: { control: Control<any> }) {
           className='flex size-6 items-center justify-center rounded-md border border-grey'
           id='c1'>
           <Checkbox.Indicator>
-            <IoCheckmark />
+            <svg className='size-4 fill-black'>
+              <use href='/sprite.svg#icon-check' />
+            </svg>
           </Checkbox.Indicator>
         </Checkbox.Root>
         <p className='text-lg'>встановити ліміт</p>
@@ -54,18 +54,20 @@ export default function CheckboxLimit({ control }: { control: Control<any> }) {
           name='limit'
           min={0}
           className={cn(
-            `w-[180px] rounded-[20px] border border-grey p-[14px] text-lg outline-none
-            transition-colors placeholder:text-grey focus-visible:border-blue`,
+            `w-[180px] rounded-[20px] border border-grey p-[14px] pr-[50px] text-lg
+            outline-none transition-colors placeholder:text-grey focus-visible:border-blue`,
             {
               'cursor-not-allowed bg-slate-200': !checked
             }
           )}
           type='number'
         />
-        <MdOutlineAttachMoney
-          size={28}
-          className='absolute right-[17px] top-[17px]'
-        />
+        <svg
+          width={28}
+          height={28}
+          className='absolute right-[17px] top-[17px] fill-black'>
+          <use href='/sprite.svg#icon-hryvnia' />
+        </svg>
       </div>
     </div>
   )

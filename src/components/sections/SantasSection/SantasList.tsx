@@ -6,7 +6,6 @@ import { getRooms } from '@/actions/getRooms'
 import { leaveSanta } from '@/actions/leaveSanta'
 import { Room } from '@/types/room'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import Image from 'next/image'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
 import { io } from 'socket.io-client'
@@ -114,12 +113,9 @@ export default function SantasList() {
                 onClick={() => handleDeleteSanta.mutate(room.id)}
                 disabled={loadingRoom === room.id}
                 className='flex items-center gap-2 text-red'>
-                <Image
-                  src='/cross.svg'
-                  width={16}
-                  height={16}
-                  alt=''
-                />
+                <svg className='size-4 fill-red'>
+                  <use href='/sprite.svg#icon-cross' />
+                </svg>
                 {loadingRoom === room.id ? 'Видаляємо...' : 'Видалити'}
               </button>
             ) : (
@@ -127,12 +123,9 @@ export default function SantasList() {
                 onClick={() => handleLeaveSanta.mutate(room.id)}
                 disabled={loadingRoom === room.id}
                 className='flex items-center gap-2 text-red'>
-                <Image
-                  src='/cross.svg'
-                  width={16}
-                  height={16}
-                  alt=''
-                />
+                <svg className='size-4 fill-red'>
+                  <use href='/sprite.svg#icon-cross' />
+                </svg>
                 {loadingRoom === room.id ? 'Виходимо...' : 'Вийти'}
               </button>
             )}

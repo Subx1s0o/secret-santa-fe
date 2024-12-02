@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { Control, useController } from 'react-hook-form'
-import { IoCheckmark } from 'react-icons/io5'
 
 export default function CheckboxRandomizer({
   control
@@ -23,7 +22,9 @@ export default function CheckboxRandomizer({
           className='flex size-6 items-center justify-center rounded-md border border-grey'
           id='randomizer-checkbox'>
           <Checkbox.Indicator>
-            <IoCheckmark />
+            <svg className='size-4 fill-black'>
+              <use href='/sprite.svg#icon-check' />
+            </svg>
           </Checkbox.Indicator>
         </Checkbox.Root>
         <p className='text-lg'>Піключити режим рандомайзера</p>

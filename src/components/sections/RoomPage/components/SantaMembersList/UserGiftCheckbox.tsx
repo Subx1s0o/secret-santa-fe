@@ -50,13 +50,9 @@ export default function UserGiftCheckbox({
           }
         )}>
         {status ? (
-          <img
-            loading='eager'
-            src='/gift.svg'
-            width={16}
-            alt=''
-            height={16}
-          />
+          <svg className='size-4 stroke-blue'>
+            <use href='/sprite.svg#icon-gift' />
+          </svg>
         ) : (
           <SantaPopup
             open={open}
