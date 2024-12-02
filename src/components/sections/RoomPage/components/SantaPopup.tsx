@@ -40,8 +40,8 @@ export default function SantaPopup({
       contentStyle={{
         borderRadius: '20px',
         overflowY: 'auto',
-        width: '800px',
-        height: '800px',
+        width: '650px',
+        height: '650px',
         padding: '20px'
       }}
       open={open}
@@ -50,13 +50,13 @@ export default function SantaPopup({
       <div className='flex h-full flex-col'>
         <h3 className='mb-3 text-center text-xl'>{user?.name}</h3>
         <div className='mb-5'>
-          <div className='flex h-[300px] flex-col'>
+          <div className='flex h-[230px] flex-col'>
             <h2 className='mb-2 flex justify-center text-lg'>Мріє про: </h2>
             <p className='mb-3 overflow-y-auto overscroll-contain whitespace-normal break-words text-md'>
               {user?.wishes[0]?.content || 'Поки бажання немає('}
             </p>
           </div>
-          <div className='flex h-[300px] flex-col'>
+          <div className='flex h-[230px] flex-col'>
             <h2 className='mb-3 flex justify-center text-lg'>
               Відправляти з Лапландії сюди:
             </h2>
