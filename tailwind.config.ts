@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+       xl: "1440px"
+      },
       colors: {
        black: "#4D4747",
        pink: "#E3A4E2",
@@ -25,6 +28,7 @@ export default {
         bottom: "0px 4px 20px 4px"
       },
       fontSize: {
+        
         xl: ["36px",{fontWeight: 700}],
         lg: ["24px", {lineHeight: "32px"}],
         md: ["18px", {lineHeight: "24px"}],

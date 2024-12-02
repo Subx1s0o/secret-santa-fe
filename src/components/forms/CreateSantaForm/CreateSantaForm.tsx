@@ -35,7 +35,7 @@ export default function CreateSantaForm({
         name='title'
         containerClassName='mx-[35px] w-[90%]'
       />
-      <p className='text-lg'>
+      <p className='text-center text-md xl:text-lg'>
         Можете встановити обмеження на вартість подарунків
       </p>
       <div className='flex flex-col items-center'>

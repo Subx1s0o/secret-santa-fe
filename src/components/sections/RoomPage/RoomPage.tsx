@@ -72,7 +72,7 @@ export default function RoomComponent({
     <section>
       <div
         className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[20px]
-          bg-primary-pink px-[80px] py-[50px]'>
+          bg-primary-pink px-[50px] py-[30px] xl:px-[80px] xl:py-[50px]'>
         <div className='w-[1065px] rounded-[20px] bg-white p-8'>
           <SantaInfo santa={currentRoom} />
           <SantaDetails

@@ -37,7 +37,7 @@ export default function CheckboxLimit({ control }: { control: Control<any> }) {
             </svg>
           </Checkbox.Indicator>
         </Checkbox.Root>
-        <p className='text-lg'>встановити ліміт</p>
+        <p className='text-md xl:text-lg'>встановити ліміт</p>
       </div>
       <div className='relative'>
         <input

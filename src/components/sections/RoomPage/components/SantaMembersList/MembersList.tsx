@@ -23,7 +23,9 @@ export default function MembersList({
   indicesWithFalseStatus: number[]
 }) {
   return (
-    <ul className='flex max-h-[400px] flex-col gap-2 overflow-y-auto overscroll-contain px-[18px]'>
+    <ul
+      className='flex max-h-[200px] flex-col gap-2 overflow-y-auto overscroll-contain px-[18px]
+        xl:max-h-[400px]'>
       {santa?.users.map((user, index) => {
         return (
           <li

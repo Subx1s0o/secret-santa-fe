@@ -27,7 +27,7 @@ export default function CheckboxRandomizer({
             </svg>
           </Checkbox.Indicator>
         </Checkbox.Root>
-        <p className='text-lg'>Піключити режим рандомайзера</p>
+        <p className='text-md xl:text-lg'>Піключити режим рандомайзера</p>
       </div>
     </div>
   )
