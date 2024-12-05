@@ -32,9 +32,6 @@ export async function login(data: SignInType) {
 
     redirect('/rooms')
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message)
-    }
-    throw new Error('Невідома помилка сервера.')
+    throw error
   }
 }
