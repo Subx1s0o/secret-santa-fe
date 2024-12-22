@@ -25,6 +25,7 @@ export default function SignUpForm() {
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(error.message)
+        console.error('Registration Error:', error.message)
       } else {
         toast.error('Unknown error occurred')
       }

@@ -19,6 +19,7 @@ export async function register(data: SignUpType) {
 
     if (!response.ok) {
       const errorData = await response.json()
+      console.log(errorData)
       throw new Error(errorData.message || `Помилка: ${response.statusText}`)
     }
 
@@ -29,6 +30,7 @@ export async function register(data: SignUpType) {
 
     redirect('/rooms')
   } catch (error) {
-    throw error
+    console.error('Error during registration:', error)
+    throw error // Передаємо далі для обробки
   }
 }
