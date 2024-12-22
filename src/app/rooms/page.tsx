@@ -8,6 +8,7 @@ import SantasSection from '@/components/sections/SantasSection/SantasSection'
 export default async function Rooms() {
   const token = cookies().get('join_token')?.value
   const session = await getSession()
+  //Треба зробити перевірку на життя токену.
 
   return (
     <section>

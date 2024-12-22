@@ -1,7 +1,5 @@
-'use server'
-
 import { Session } from '@/types/auth-response'
-import { cookies } from 'next/headers'
+import Cookies from 'js-cookie'
 import { redirect } from 'next/navigation'
 
 import { SignInType } from '@/components/forms/schemas/auth'
@@ -27,8 +25,8 @@ export async function login(data: SignInType) {
 
     const result = (await response.json()) as Session
 
-    cookies().set('session', result.sessionToken)
-    cookies().set('user', JSON.stringify(result.user))
+    Cookies.set('session', result.sessionToken)
+    Cookies.set('user', JSON.stringify(result.user))
 
     redirect('/rooms')
   } catch (error) {

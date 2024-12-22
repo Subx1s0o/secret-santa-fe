@@ -22,8 +22,12 @@ export default function SignUpForm() {
   async function onSubmit(data: SignUpType) {
     try {
       await register(data)
-    } catch {
-      toast.error('Невдалося авторизуватися')
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message)
+      } else {
+        toast.error('Unknown error occurred')
+      }
     }
   }
 
