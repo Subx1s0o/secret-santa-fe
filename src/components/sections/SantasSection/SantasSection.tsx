@@ -1,4 +1,4 @@
-import { getRooms } from '@/actions/getRooms'
+import { getSantas } from '@/actions/getSantas'
 import {
   dehydrate,
   HydrationBoundary,
@@ -11,8 +11,8 @@ export default async function SantasSection() {
   const client = new QueryClient()
 
   await client.prefetchQuery({
-    queryKey: ['rooms'],
-    queryFn: getRooms,
+    queryKey: ['santas'],
+    queryFn: getSantas,
     staleTime: 1000 * 60 * 60 * 1
   })
 

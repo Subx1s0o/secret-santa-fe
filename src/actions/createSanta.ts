@@ -1,6 +1,6 @@
 'use server'
 
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 
 import { CreateSantaType } from '@/components/forms/schemas/createSanta'
 
@@ -23,7 +23,7 @@ export async function createSanta(data: CreateSantaType) {
       throw new Error(errorData.message || `Помилка: ${response.statusText}`)
     }
 
-    const result = (await response.json()) as Room
+    const result = (await response.json()) as Santa
 
     return result
   } catch (error) {

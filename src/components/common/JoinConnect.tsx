@@ -22,9 +22,9 @@ const SocketConnect = ({ token, session }: SocketConnectProps) => {
 
     socket.on('room-joined', response => {
       if (response.success) {
-        router.replace('/rooms/status/success')
+        router.replace('/santas/status/success')
       } else {
-        router.replace('/rooms/status/failed')
+        router.replace('/santas/status/failed')
       }
     })
 

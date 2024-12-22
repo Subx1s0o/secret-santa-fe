@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
-import { RoomUser } from '@/types/room'
+import { RoomUser } from '@/types/santa'
 
 export function useRandomIndex() {
   const [randomIndex, setRandomIndex] = useState<number | null>(null)
@@ -16,8 +16,7 @@ export function useRandomIndex() {
 
   const randomize = useCallback(
     (indices: number[], delay: number, users: RoomUser[]) => {
-      if (intervalRef.current || timeoutRef.current) return 
-
+      if (intervalRef.current || timeoutRef.current) return
 
       if (indices.length === 1) {
         const singleIndex = indices[0]
@@ -27,7 +26,6 @@ export function useRandomIndex() {
         return
       }
 
-    
       setSelectedUser(null)
 
       const availableIndices = [...indices] // Копія для роботи

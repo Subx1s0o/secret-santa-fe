@@ -1,4 +1,4 @@
-export type RoomUser = {
+export type SantaUser = {
   id: string
   name: string
   email: string
@@ -16,12 +16,12 @@ export type RoomUser = {
   }>
 }
 
-export type Room = {
+export type Santa = {
   id: string
   title: string
   owner: string
   limit?: number
   url: string
   randomizer: boolean
-  users: RoomUser[]
+  users: SantaUser[]
 }

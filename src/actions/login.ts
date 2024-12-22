@@ -1,5 +1,7 @@
+'use server'
+
 import { Session } from '@/types/auth-response'
-import Cookies from 'js-cookie'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { SignInType } from '@/components/forms/schemas/auth'
@@ -19,16 +21,26 @@ export async function login(data: SignInType) {
 
     if (!response.ok) {
       const errorData = await response.json()
-      console.log(errorData)
       throw new Error(errorData.message || `Помилка: ${response.statusText}`)
     }
 
     const result = (await response.json()) as Session
 
-    Cookies.set('session', result.sessionToken)
-    Cookies.set('user', JSON.stringify(result.user))
+    cookies().set({
+      name: 'session',
+      value: result.sessionToken,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      expires: result.sessionTokenValidUntil
+    })
+    cookies().set({
+      name: 'user',
+      value: JSON.stringify(result.user),
+      secure: process.env.NODE_ENV === 'production',
+      expires: result.sessionTokenValidUntil
+    })
 
-    redirect('/rooms')
+    redirect('/santas')
   } catch (error) {
     throw error
   }

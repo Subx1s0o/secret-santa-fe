@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { deleteSanta } from '@/actions/deleteSanta'
-import { getRooms } from '@/actions/getRooms'
+import { getSantas } from '@/actions/getSantas'
 import { leaveSanta } from '@/actions/leaveSanta'
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
@@ -14,23 +14,23 @@ import { useUser } from '@/hooks/useUser'
 
 export default function SantasList() {
   const { data } = useQuery<{
-    data: Room[]
+    data: Santa[]
   }>({
-    queryKey: ['rooms'],
-    queryFn: async () => getRooms()
+    queryKey: ['santas'],
+    queryFn: async () => getSantas()
   })
   const me = useUser()
   const socket = io(process.env.NEXT_PUBLIC_API_URL)
   const queryClient = useQueryClient()
 
-  const [loadingRoom, setLoadingRoom] = useState<string | null>(null)
+  const [loadingSanta, setLoadingSanta] = useState<string | null>(null)
 
   const handleDeleteSanta = useMutation({
-    mutationFn: async (roomId: string) => {
-      setLoadingRoom(roomId)
+    mutationFn: async (santaId: string) => {
+      setLoadingSanta(santaId)
       const toastId = toast.loading('Видаляємо...')
-      const ok = await deleteSanta(roomId)
-      socket.emit('delete-room', { roomId })
+      const ok = await deleteSanta(santaId)
+      socket.emit('delete-santa', { santaId })
 
       if (ok) {
         toast.update(toastId, {
@@ -47,10 +47,10 @@ export default function SantasList() {
           autoClose: 2000
         })
       }
-      setLoadingRoom(null)
+      setLoadingSanta(null)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['rooms'] })
+      queryClient.invalidateQueries({ queryKey: ['santas'] })
     },
     onError: error => {
       console.error('Помилка видалення кімнати:', error)
@@ -58,11 +58,11 @@ export default function SantasList() {
   })
 
   const handleLeaveSanta = useMutation({
-    mutationFn: async (roomId: string) => {
-      setLoadingRoom(roomId)
+    mutationFn: async (santaId: string) => {
+      setLoadingSanta(santaId)
       const toastId = toast.loading('Виходимо...')
-      const ok = await leaveSanta(roomId)
-      socket.emit('leave-room', { roomId })
+      const ok = await leaveSanta(santaId)
+      socket.emit('leave-santa', { santaId })
 
       if (ok) {
         toast.update(toastId, {
@@ -79,10 +79,10 @@ export default function SantasList() {
           autoClose: 2000
         })
       }
-      setLoadingRoom(null)
+      setLoadingSanta(null)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['rooms'] })
+      queryClient.invalidateQueries({ queryKey: ['santas'] })
     },
     onError: error => {
       console.error('Помилка видалення кімнати:', error)
@@ -92,41 +92,41 @@ export default function SantasList() {
   return (
     <ul className='flex max-h-[400px] flex-col gap-2 overflow-y-auto overscroll-contain'>
       {data && data.data.length > 0 ? (
-        data.data.map((room, index) => (
+        data.data.map((santa, index) => (
           <li
             className='relative flex items-center justify-between border-b border-grey pb-[10px] pl-2
               pt-2'
-            key={room.id}>
+            key={santa.id}>
             <div className='flex items-center gap-2'>
               <span className='text-md'>{index + 1}.</span>
               <p className='max-w-[150px] overflow-hidden text-ellipsis text-nowrap text-md'>
-                {room.title}
+                {santa.title}
               </p>
             </div>
-            <Link href={`rooms/${room.id}`}>
+            <Link href={`santas/${santa.id}`}>
               <p className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-blue'>
                 Детальніше
               </p>
             </Link>
-            {room.owner === me?.id ? (
+            {santa.owner === me?.id ? (
               <button
-                onClick={() => handleDeleteSanta.mutate(room.id)}
-                disabled={loadingRoom === room.id}
+                onClick={() => handleDeleteSanta.mutate(santa.id)}
+                disabled={loadingSanta === santa.id}
                 className='flex items-center gap-2 text-red'>
                 <svg className='size-4 fill-red'>
                   <use href='/sprite.svg#icon-cross' />
                 </svg>
-                {loadingRoom === room.id ? 'Видаляємо...' : 'Видалити'}
+                {loadingSanta === santa.id ? 'Видаляємо...' : 'Видалити'}
               </button>
             ) : (
               <button
-                onClick={() => handleLeaveSanta.mutate(room.id)}
-                disabled={loadingRoom === room.id}
+                onClick={() => handleLeaveSanta.mutate(santa.id)}
+                disabled={loadingSanta === santa.id}
                 className='flex items-center gap-2 text-red'>
                 <svg className='size-4 fill-red'>
                   <use href='/sprite.svg#icon-cross' />
                 </svg>
-                {loadingRoom === room.id ? 'Виходимо...' : 'Вийти'}
+                {loadingSanta === santa.id ? 'Виходимо...' : 'Вийти'}
               </button>
             )}
           </li>

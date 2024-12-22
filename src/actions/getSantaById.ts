@@ -1,8 +1,8 @@
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 
 import { getSession } from './getSession'
 
-export const getRoomById = async (roomId: string): Promise<Room | null> => {
+export const getSantaById = async (roomId: string): Promise<Santa | null> => {
   try {
     const session = await getSession()
     const response = await fetch(
@@ -19,9 +19,9 @@ export const getRoomById = async (roomId: string): Promise<Room | null> => {
       return null
     }
 
-    const room = (await response.json()) as Room
+    const santa = (await response.json()) as Santa
 
-    return room
+    return santa
   } catch {
     return null
   }

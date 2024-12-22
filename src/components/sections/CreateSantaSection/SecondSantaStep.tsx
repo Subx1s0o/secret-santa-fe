@@ -23,7 +23,7 @@ export default function SecondSantaStep({ santaUrl }: { santaUrl: string }) {
       <Button
         variant='filled'
         activate='link'
-        href='/rooms'
+        href='/santas'
         className='mt-4 text-center'>
         Мої санти
       </Button>

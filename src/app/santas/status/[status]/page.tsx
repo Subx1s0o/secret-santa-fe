@@ -17,9 +17,9 @@ export default function StatusPage({ params }: PageProps) {
   useEffect(() => {
     deleteJoinToken()
     if (params.status === 'success') {
-      router.replace('/rooms/status/success')
+      router.replace('/santas/status/success')
     } else if (params.status === 'failed') {
-      router.replace('/rooms/status/failed')
+      router.replace('/santas/status/failed')
     }
   }, [params.status, router])
 

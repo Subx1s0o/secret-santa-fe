@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSantaSocketStore } from '@/stores/useSantaSocketStore'
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import io from 'socket.io-client'
@@ -10,36 +10,34 @@ import io from 'socket.io-client'
 import SantaDetails from './components/SantaDetails'
 import SantaInfo from './components/SantasInfo'
 
-interface RoomComponentProps {
-  roomId: string
-  room: Room
+interface SantaPageProps {
+  santaId: string
+  santa: Santa
   session: string | null
 }
 
-export default function RoomComponent({
-  roomId,
-  room,
-  session
-}: RoomComponentProps) {
-  const [currentRoom, setCurrentRoom] = useState<Room>(room)
+export default function SantaPage({ santaId, santa, session }: SantaPageProps) {
+  const [currentSanta, setCurrentSanta] = useState<Santa>(santa)
+
   const { setSocket } = useSantaSocketStore()
   const router = useRouter()
+
   useEffect(() => {
     const socket = io(process.env.NEXT_PUBLIC_API_URL)
     setSocket(socket)
 
-    socket.emit('connect-room', roomId)
+    socket.emit('connect-room', santaId)
 
-    socket.on('room-updated', updatedRoom => {
-      setCurrentRoom(prevRoom => ({ ...prevRoom, ...updatedRoom }))
+    socket.on('room-updated', updatedSanta => {
+      setCurrentSanta(prevSanta => ({ ...prevSanta, ...updatedSanta }))
 
       toast.success('Санта оновив свої сані')
     })
 
-    socket.on('user-updated', updatedRoom => {
-      setCurrentRoom(prevRoom => ({
-        ...prevRoom,
-        users: [...updatedRoom.users]
+    socket.on('user-updated', updatedSanta => {
+      setCurrentSanta(prevSanta => ({
+        ...prevSanta,
+        users: [...updatedSanta.users]
       }))
     })
 
@@ -52,7 +50,7 @@ export default function RoomComponent({
     })
 
     socket.on('room-deleted', () => {
-      router.push('/rooms')
+      router.push('/santas')
     })
 
     return () => {
@@ -66,7 +64,7 @@ export default function RoomComponent({
       socket.disconnect()
       setSocket(null)
     }
-  }, [roomId])
+  }, [router, santaId, setSocket])
 
   return (
     <section>
@@ -74,10 +72,10 @@ export default function RoomComponent({
         className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[20px]
           bg-primary-pink px-[50px] py-[30px] xl:px-[80px] xl:py-[50px]'>
         <div className='w-[1065px] rounded-[20px] bg-white p-8'>
-          <SantaInfo santa={currentRoom} />
+          <SantaInfo santa={currentSanta} />
           <SantaDetails
             session={session}
-            santa={currentRoom}
+            santa={currentSanta}
           />
         </div>
       </div>

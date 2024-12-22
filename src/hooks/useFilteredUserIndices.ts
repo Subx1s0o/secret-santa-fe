@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Room } from '@/types/room'
+import { Room } from '@/types/santa'
 
 import { useUser } from './useUser'
 

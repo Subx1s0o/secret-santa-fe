@@ -27,12 +27,13 @@ export default function RootLayout({
     <html lang='uk'>
       <body
         className={`${Anonymous.className} h-[calc(100vh-122px)] bg-turquoise antialiased`}>
-        <Header />
-
-        <main className='relative h-full bg-santa bg-cover'>
-          <Providers>{children}</Providers>
-          <HelpingFooter />
-        </main>
+        <Providers>
+          <Header />
+          <main className='relative h-full bg-santa bg-cover'>
+            {children}
+            <HelpingFooter />
+          </main>
+        </Providers>
       </body>
     </html>
   )

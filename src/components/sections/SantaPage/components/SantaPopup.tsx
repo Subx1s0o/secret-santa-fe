@@ -1,7 +1,7 @@
 'use client'
 
 import { useSantaSocketStore } from '@/stores/useSantaSocketStore'
-import { RoomUser } from '@/types/room'
+import { SantaUser } from '@/types/santa'
 import Popup from 'reactjs-popup'
 
 import Button from '@/components/ui/Button'
@@ -12,12 +12,12 @@ import { useUser } from '@/hooks/useUser'
 export default function SantaPopup({
   user,
   reset,
-  roomId,
+  santaId,
   open,
   setOpen
 }: {
-  roomId: string | undefined
-  user: RoomUser | null
+  santaId: string | undefined
+  user: SantaUser | null
   reset: () => void
   open: boolean
   setOpen: (bool: boolean) => void
@@ -28,7 +28,11 @@ export default function SantaPopup({
 
   const checkedStatus = () => {
     setOpen(false)
-    socket?.emit('checked-status', { roomId, user: me?.id, userId: user?.id })
+    socket?.emit('checked-status', {
+      roomId: santaId,
+      user: me?.id,
+      userId: user?.id
+    })
   }
 
   const handleClose = () => {

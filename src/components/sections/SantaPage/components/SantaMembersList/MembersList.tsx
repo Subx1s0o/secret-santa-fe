@@ -1,5 +1,5 @@
 import cn from '@/lib/cn'
-import { Room } from '@/types/room'
+import { Room } from '@/types/santa'
 
 import AddressForm from '@/components/forms/WishAndAddressForms/AddressForm'
 import WishForm from '@/components/forms/WishAndAddressForms/WishForm'

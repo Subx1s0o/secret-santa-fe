@@ -1,7 +1,7 @@
 'use client'
 
 import { useSantaSocketStore } from '@/stores/useSantaSocketStore'
-import { RoomUser } from '@/types/room'
+import { RoomUser } from '@/types/santa'
 import { zodResolver } from '@hookform/resolvers/zod'
 import dynamic from 'next/dynamic'
 import { useForm } from 'react-hook-form'

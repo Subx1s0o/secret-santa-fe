@@ -11,17 +11,17 @@ export default function middleware(request: NextRequest) {
   }
 
   if (
-    request.nextUrl.pathname.startsWith('/rooms/status') &&
+    request.nextUrl.pathname.startsWith('/santas/status') &&
     !cookies().get('join_token')?.value
   ) {
-    return NextResponse.redirect(new URL('/rooms', request.url))
+    return NextResponse.redirect(new URL('/santas', request.url))
   }
 
   if (request.nextUrl.pathname === '/rules' && !session) {
     return NextResponse.redirect(new URL('/sign-in', request.url))
   }
 
-  if (request.nextUrl.pathname.startsWith('/rooms') && !session) {
+  if (request.nextUrl.pathname.startsWith('/santas') && !session) {
     return NextResponse.redirect(new URL('/sign-in', request.url))
   }
 
@@ -30,7 +30,7 @@ export default function middleware(request: NextRequest) {
       request.nextUrl.pathname === '/sign-up') &&
     session
   ) {
-    return NextResponse.redirect(new URL('/rooms', request.url))
+    return NextResponse.redirect(new URL('/santas', request.url))
   }
 
   if (request.nextUrl.pathname === '/' && !session) {
@@ -38,12 +38,12 @@ export default function middleware(request: NextRequest) {
   }
 
   if (request.nextUrl.pathname === '/' && session) {
-    return NextResponse.redirect(new URL('/rooms', request.url))
+    return NextResponse.redirect(new URL('/santas', request.url))
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/', '/sign-in', '/sign-up', '/rooms', '/rooms/:path*', '/rules']
+  matcher: ['/', '/sign-in', '/sign-up', '/santas', '/santas/:path*', '/rules']
 }

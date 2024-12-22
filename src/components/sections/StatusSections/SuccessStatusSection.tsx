@@ -13,7 +13,7 @@ export default function SuccessStatusSection() {
         </p>
         <Button
           variant='filled'
-          href='/rooms'
+          href='/santas'
           activate='link'
           className='mx-auto table'>
           Мій Санта

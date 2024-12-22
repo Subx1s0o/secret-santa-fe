@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import cn from '@/lib/cn'
-import { RoomUser } from '@/types/room'
+import { RoomUser } from '@/types/santa'
 import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 

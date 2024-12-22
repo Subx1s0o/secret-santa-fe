@@ -1,6 +1,6 @@
 'use client'
 
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 
 import useFilteredUserIndices from '@/hooks/useFilteredUserIndices'
 import { useRandomIndex } from '@/hooks/useRandomIndex'
@@ -23,7 +23,7 @@ export default function SantaDetails({
   session,
   santa
 }: {
-  santa: Room | undefined
+  santa: Santa | undefined
   session: string | null
 }) {
   const indicesWithFalseStatus = useFilteredUserIndices(santa)
@@ -77,7 +77,7 @@ export default function SantaDetails({
         <SantaPopup
           open={open}
           setOpen={setOpen}
-          roomId={santa?.id}
+          santaId={santa?.id}
           reset={reset}
           user={selectedUser}
         />

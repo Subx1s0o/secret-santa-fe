@@ -7,5 +7,5 @@ export type User = {
 export type Session = {
   user: User
   sessionToken: string
-  sessionTokenValidUntil: string
+  sessionTokenValidUntil: number
 }

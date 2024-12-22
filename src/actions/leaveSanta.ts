@@ -1,14 +1,14 @@
 'use server'
 
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 
 import { getSession } from './getSession'
 
-export async function leaveSanta(roomId: string) {
+export async function leaveSanta(santaId: string) {
   const session = await getSession()
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/rooms/${roomId}/leave`,
+      `${process.env.NEXT_PUBLIC_API_URL}/rooms/${santaId}/leave`,
       {
         method: 'PUT',
         headers: {
@@ -23,7 +23,7 @@ export async function leaveSanta(roomId: string) {
       throw new Error(errorData.message || `Помилка: ${response.statusText}`)
     }
 
-    const result = (await response.json()) as Room
+    const result = (await response.json()) as Santa
 
     return result
   } catch (error) {

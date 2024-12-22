@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { createSanta } from '@/actions/createSanta'
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 
@@ -12,7 +12,7 @@ import { CreateSantaType } from '@/components/forms/schemas/createSanta'
 import SecondSantaStep from './SecondSantaStep'
 
 export default function CreateSantaSection() {
-  const [santaData, setSantaData] = useState<Room | null>(null)
+  const [santaData, setSantaData] = useState<Santa | null>(null)
   const queryClient = useQueryClient()
 
   const onCreateSanta = async (data: CreateSantaType) => {
@@ -20,7 +20,7 @@ export default function CreateSantaSection() {
       const result = await createSanta(data)
       setSantaData(result)
 
-      queryClient.invalidateQueries({ queryKey: ['rooms'] })
+      queryClient.invalidateQueries({ queryKey: ['santas'] })
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error('Не вдалося створити санту, спробуй пізніше')
@@ -31,6 +31,7 @@ export default function CreateSantaSection() {
   }
 
   if (santaData) {
+    console.log(santaData)
     return <SecondSantaStep santaUrl={santaData.url} />
   }
 

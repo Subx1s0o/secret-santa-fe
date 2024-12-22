@@ -1,19 +1,19 @@
-import { getRoomById } from '@/actions/getRoomById'
+import { getSantaById } from '@/actions/getSantaById'
 import { getSession } from '@/actions/getSession'
 
-import RoomPage from '@/components/sections/RoomPage/RoomPage'
+import SantaPage from '@/components/sections/SantaPage/SantaPage'
 
-export default async function RoomIdPage({
+export default async function SantaIdPage({
   params
 }: {
-  params: { roomId: string }
+  params: { santaId: string }
 }) {
-  const [room, session] = await Promise.all([
-    getRoomById(params.roomId),
+  const [santa, session] = await Promise.all([
+    getSantaById(params.santaId),
     getSession()
   ])
 
-  if (!room) {
+  if (!santa) {
     return (
       <div
         className='absolute right-[15.5%] top-[200px] flex h-[300px] w-[620px] flex-col gap-[36px]
@@ -26,10 +26,10 @@ export default async function RoomIdPage({
   }
 
   return (
-    <RoomPage
+    <SantaPage
       session={session}
-      roomId={params.roomId}
-      room={room}
+      santaId={params.santaId}
+      santa={santa}
     />
   )
 }

@@ -12,9 +12,9 @@ export default function Navigation() {
       <li>
         <Link
           className={cn('px-6 py-3 text-lg text-blue', {
-            'rounded-[20px] border-2 border-red': path === '/rooms'
+            'rounded-[20px] border-2 border-red': path === '/santas'
           })}
-          href='/rooms'>
+          href='/santas'>
           Мій Санта
         </Link>
       </li>
@@ -31,9 +31,9 @@ export default function Navigation() {
       <li>
         <Link
           className={cn('px-6 py-3 text-lg text-blue', {
-            'rounded-[20px] border-2 border-red': path === '/rooms/create'
+            'rounded-[20px] border-2 border-red': path === '/santas/create'
           })}
-          href='/rooms/create'>
+          href='/santas/create'>
           Створити
         </Link>
       </li>

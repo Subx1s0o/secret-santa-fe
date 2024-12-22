@@ -1,9 +1,9 @@
 import cn from '@/lib/cn'
-import { Room } from '@/types/room'
+import { Santa } from '@/types/santa'
 
 import SantaCopyingLinkButton from '@/components/ui/SantaCopyingLinkButton'
 
-export default function SantasInfo({ santa }: { santa: Room }) {
+export default function SantasInfo({ santa }: { santa: Santa }) {
   return (
     <div className='mb-[42px] flex items-center justify-between'>
       <h1
