@@ -31,7 +31,6 @@ export default function CreateSantaSection() {
   }
 
   if (santaData) {
-    console.log(santaData)
     return <SecondSantaStep santaUrl={santaData.url} />
   }
 
