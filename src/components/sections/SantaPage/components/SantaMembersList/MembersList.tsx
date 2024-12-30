@@ -1,5 +1,6 @@
 import cn from '@/lib/cn'
-import { Room } from '@/types/santa'
+import { Santa } from '@/types/santa'
+import Image from 'next/image'
 
 import AddressForm from '@/components/forms/WishAndAddressForms/AddressForm'
 import WishForm from '@/components/forms/WishAndAddressForms/WishForm'
@@ -15,7 +16,7 @@ export default function MembersList({
   reset,
   indicesWithFalseStatus
 }: {
-  santa: Room | undefined
+  santa: Santa | undefined
   session: string | null
   randomIndex: number | null
   disableChoosingUser: boolean
@@ -41,7 +42,7 @@ export default function MembersList({
                 reset={reset}
                 status={user.statusses[0].status}
                 userEmail={user.email}
-                roomId={santa.id}
+                santaId={santa.id}
                 users={santa.users}
                 indicesWithFalseStatus={indicesWithFalseStatus}
                 userIndex={index}
@@ -60,34 +61,36 @@ export default function MembersList({
                 text-md'
             />
             <WishForm
-              roomId={santa.id}
+              santaId={santa.id}
               token={session}
               user={user}
               random={santa.randomizer}
             />
             <AddressForm
-              roomId={santa.id}
+              santaId={santa.id}
               token={session}
               user={user}
               random={santa.randomizer}
             />
             {index === randomIndex && (
               <div>
-                <img
+                <Image
                   loading='eager'
                   src='/gift.webp'
                   width={50}
                   alt='gift'
                   className='absolute -left-[5px] -top-[3px] z-10'
                   height={50}
+                  unoptimized
                 />
-                <img
+                <Image
                   loading='eager'
                   src='/gift.webp'
                   width={50}
                   alt='gift'
                   className='absolute -right-[5px] -top-[3px] z-10'
                   height={50}
+                  unoptimized
                 />
               </div>
             )}

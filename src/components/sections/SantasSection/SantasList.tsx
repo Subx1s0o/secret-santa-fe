@@ -62,7 +62,7 @@ export default function SantasList() {
       setLoadingSanta(santaId)
       const toastId = toast.loading('Виходимо...')
       const ok = await leaveSanta(santaId)
-      socket.emit('leave-santa', { santaId })
+      socket.emit('leave-santa', { santaId, userId: me?.id })
 
       if (ok) {
         toast.update(toastId, {

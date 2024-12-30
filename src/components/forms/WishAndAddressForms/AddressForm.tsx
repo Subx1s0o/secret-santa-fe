@@ -1,7 +1,7 @@
 'use client'
 
 import { useSantaSocketStore } from '@/stores/useSantaSocketStore'
-import { RoomUser } from '@/types/santa'
+import { SantaUser } from '@/types/santa'
 import { zodResolver } from '@hookform/resolvers/zod'
 import dynamic from 'next/dynamic'
 import { useForm } from 'react-hook-form'
@@ -13,15 +13,15 @@ import { AddressSchema, AddressType } from '../schemas/address'
 const Popup = dynamic(() => import('reactjs-popup'), { ssr: false })
 
 interface AddressFromProps {
-  user: RoomUser
-  roomId: string
+  user: SantaUser
+  santaId: string
   token: string | null
   random: boolean
 }
 
 export default function AddressFrom({
   user,
-  roomId,
+  santaId,
   token,
   random
 }: AddressFromProps) {
@@ -38,7 +38,8 @@ export default function AddressFrom({
 
   const onSubmit = ({ address }: AddressType) => {
     socket?.emit('address', {
-      roomId,
+      santaId,
+      userId: storedUser?.id,
       token,
       content: address
     })

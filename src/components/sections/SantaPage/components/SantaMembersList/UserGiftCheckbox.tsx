@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import cn from '@/lib/cn'
-import { RoomUser } from '@/types/santa'
+import { SantaUser } from '@/types/santa'
 import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 
@@ -12,7 +12,7 @@ const SantaPopup = dynamic(() => import('../SantaPopup'), { ssr: false })
 export default function UserGiftCheckbox({
   status,
   userEmail,
-  roomId,
+  santaId,
   reset,
   users,
   indicesWithFalseStatus,
@@ -22,14 +22,14 @@ export default function UserGiftCheckbox({
   disabled: boolean
   status: boolean
   userEmail: string
-  roomId: string
-  users: RoomUser[]
+  santaId: string
+  users: SantaUser[]
   reset: () => void
   indicesWithFalseStatus: number[]
   userIndex: number
 }) {
   const [open, setOpen] = useState(false)
-  const [choosedUser, setChoosedUser] = useState<RoomUser | null>(null)
+  const [choosedUser, setChoosedUser] = useState<SantaUser | null>(null)
   const storedUser = useUser()
 
   const chosen = useChoosedUser(users, indicesWithFalseStatus, userIndex)
@@ -68,7 +68,7 @@ export default function UserGiftCheckbox({
               setOpen={setOpen}
               user={choosedUser}
               reset={reset}
-              roomId={roomId}
+              santaId={santaId}
             />
           )
         )}
