@@ -4,11 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
 import Button from '@/components/ui/Button'
+import CheckboxLimit from '@/components/ui/CheckboxLimit'
+import CheckboxRandomizer from '@/components/ui/CheckboxRandomizer'
+import Input from '@/components/ui/Input'
 
-import Input from '../Input'
 import { createSantaSchema, CreateSantaType } from '../schemas/createSanta'
-import CheckboxLimit from './CheckboxLimit'
-import CheckboxRandomizer from './CheckboxRandomizer'
 
 export default function CreateSantaForm({
   onSubmit

@@ -7,7 +7,9 @@ import { toast } from 'react-toastify'
 import { useChoosedUser } from '@/hooks/useChoosedUser'
 import { useUser } from '@/hooks/useUser'
 
-const SantaPopup = dynamic(() => import('../SantaPopup'), { ssr: false })
+const SantaPopup = dynamic(() => import('../features/SantaPopup'), {
+  ssr: false
+})
 
 export default function UserGiftCheckbox({
   status,

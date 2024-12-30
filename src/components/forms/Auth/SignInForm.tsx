@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 import Button from '@/components/ui/Button'
 
-import Input from '../Input'
+import Input from '../../ui/Input'
 import { SignInSchema, SignInType } from '../schemas/auth'
 
 export default function SignInForm() {

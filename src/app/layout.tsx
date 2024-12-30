@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 
 import './globals.css'
 
+import Providers from '@/app/Providers'
 import { Anonymous_Pro } from 'next/font/google'
 
-import Header from '@/components/common/Header'
-import HelpingFooter from '@/components/common/HelpingFooter'
-import Providers from '@/components/providers/Providers'
+import MusicGift from '@/components/features/MusicGift'
+import Header from '@/components/sections/Header/Header'
 
 export const metadata: Metadata = {
   title: 'Гра Санта для карʼєрного центру GoIT',
@@ -31,7 +31,7 @@ export default function RootLayout({
           <Header />
           <main className='relative h-full bg-santa bg-cover'>
             {children}
-            <HelpingFooter />
+            <MusicGift />
           </main>
         </Providers>
       </body>

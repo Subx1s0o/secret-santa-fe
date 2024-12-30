@@ -10,14 +10,17 @@ import 'reactjs-popup/dist/index.css'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 
+import SantasRandomizer from '@/components/features/SantasRandomizer'
+
 import useIsButtonDisabled from '@/hooks/useIsButtonDisabled'
 import { useUser } from '@/hooks/useUser'
 
-import MembersList from './SantaMembersList/MembersList'
-import SantaMembersHeader from './SantaMembersList/SantaMembersHeader'
-import SantasRandomizer from './SantasRandomizer'
+import MembersList from '../SantaMembersList/MembersList'
+import SantaMembersHeader from '../SantaMembersList/SantaMembersHeader'
 
-const SantaPopup = dynamic(() => import('./SantaPopup'), { ssr: false })
+const SantaPopup = dynamic(() => import('@/components/features/SantaPopup'), {
+  ssr: false
+})
 
 export default function SantaDetails({
   session,
@@ -32,7 +35,7 @@ export default function SantaDetails({
   const me = useUser()
   useEffect(() => {
     reset()
-  }, [santa])
+  }, [reset, santa])
 
   useEffect(() => {
     if (selectedUser) {

@@ -2,11 +2,11 @@ import cn from '@/lib/cn'
 import { Santa } from '@/types/santa'
 import Image from 'next/image'
 
-import AddressForm from '@/components/forms/WishAndAddressForms/AddressForm'
-import WishForm from '@/components/forms/WishAndAddressForms/WishForm'
+import AddressForm from '@/components/forms/SantasForms/AddressForm'
+import WishForm from '@/components/forms/SantasForms/WishForm'
 import SantaCopyingLinkButton from '@/components/ui/SantaCopyingLinkButton'
 
-import UserGiftCheckbox from './UserGiftCheckbox'
+import UserGiftCheckbox from '../../../../ui/UserGiftCheckbox'
 
 export default function MembersList({
   santa,

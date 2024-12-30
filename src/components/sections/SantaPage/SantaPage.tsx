@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import io from 'socket.io-client'
 
-import SantaDetails from './components/SantaDetails'
-import SantaInfo from './components/SantasInfo'
+import SantaDetails from './components/SantaDetails/SantaDetails'
+import SantaInfo from './components/SantaDetails/SantasInfo'
 
 interface SantaPageProps {
   santaId: string

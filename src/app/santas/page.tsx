@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 
-import JoinConnect from '@/components/common/JoinConnect'
+import JoinConnect from '@/components/features/JoinConnect'
 import SantasSection from '@/components/sections/SantasSection/SantasSection'
 
 export const metadata: Metadata = {

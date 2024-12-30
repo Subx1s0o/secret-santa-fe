@@ -6,7 +6,7 @@ import { Santa } from '@/types/santa'
 import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 
-import CreateSantaForm from '@/components/forms/CreateSantaForm/CreateSantaForm'
+import CreateSantaForm from '@/components/forms/SantasForms/CreateSantaForm'
 import { CreateSantaType } from '@/components/forms/schemas/createSanta'
 
 import SecondSantaStep from './SecondSantaStep'

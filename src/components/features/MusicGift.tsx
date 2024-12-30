@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { useRef, useState } from 'react'
 
-export default function HelpingFooter() {
+export default function MusicGift() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 

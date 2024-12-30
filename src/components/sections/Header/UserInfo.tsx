@@ -4,7 +4,7 @@ import { logout } from '@/actions/logout'
 
 import { useUser } from '@/hooks/useUser'
 
-import Button from '../ui/Button'
+import Button from '../../ui/Button'
 
 export default function UserInfo() {
   const user = useUser()
