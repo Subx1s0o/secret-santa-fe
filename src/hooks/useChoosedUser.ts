@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
-import { RoomUser } from '@/types/santa'
+import { SantaUser } from '@/types/santa'
 
 export const useChoosedUser = (
-  users: RoomUser[] | undefined,
+  users: SantaUser[] | undefined,
   indicesWithFalseStatus: number[] | undefined,
   index: number
 ) => {

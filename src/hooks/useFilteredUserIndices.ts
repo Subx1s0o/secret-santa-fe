@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { Room } from '@/types/santa'
+import { Santa } from '@/types/santa'
 
 import { useUser } from './useUser'
 
-const useFilteredUserIndices = (santa: Room | undefined) => {
+const useFilteredUserIndices = (santa: Santa | undefined) => {
   const me = useUser()
 
   return useMemo(() => {

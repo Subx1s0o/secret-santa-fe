@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Room } from '@/types/santa'
+import { Santa } from '@/types/santa'
 
 export default function useIsButtonDisabled(
-  santa: Room | undefined,
+  santa: Santa | undefined,
   userId: string | undefined
 ) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false)
