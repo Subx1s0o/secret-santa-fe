@@ -21,6 +21,14 @@ export default function CreateSantaSection() {
       setSantaData(result)
 
       queryClient.invalidateQueries({ queryKey: ['santas'] })
+      queryClient.setQueryData(
+        ['santas'],
+        (oldData: { data: Santa[] } | undefined) => {
+          if (!oldData) return { data: [result] }
+
+          return { data: [...oldData.data, result] }
+        }
+      )
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error('Не вдалося створити санту, спробуй пізніше')

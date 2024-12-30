@@ -17,7 +17,8 @@ export default function SantasList() {
     data: Santa[]
   }>({
     queryKey: ['santas'],
-    queryFn: async () => getSantas()
+    queryFn: async () => getSantas(),
+    staleTime: 1000 * 60 * 60 * 1
   })
   const me = useUser()
   const socket = io(process.env.NEXT_PUBLIC_API_URL)
@@ -49,10 +50,21 @@ export default function SantasList() {
       }
       setLoadingSanta(null)
     },
-    onSuccess: () => {
+    onSuccess: (_, santaId) => {
+      console.log('success')
       queryClient.invalidateQueries({ queryKey: ['santas'] })
+      queryClient.setQueryData(['santas'], (oldData: { data: Santa[] }) => {
+        console.log(oldData)
+        if (!oldData) return oldData
+
+        return {
+          ...oldData,
+          data: oldData.data.filter((santa: Santa) => santa.id !== santaId)
+        }
+      })
     },
     onError: error => {
+      toast.error('Не вдалося вийти з кімнати')
       console.error('Помилка видалення кімнати:', error)
     }
   })
@@ -81,10 +93,21 @@ export default function SantasList() {
       }
       setLoadingSanta(null)
     },
-    onSuccess: () => {
+    onSuccess: (_, santaId) => {
+      console.log('success')
       queryClient.invalidateQueries({ queryKey: ['santas'] })
+      queryClient.setQueryData(['santas'], (oldData: { data: Santa[] }) => {
+        console.log(oldData)
+        if (!oldData) return oldData
+
+        return {
+          ...oldData,
+          data: oldData.data.filter((santa: Santa) => santa.id !== santaId)
+        }
+      })
     },
     onError: error => {
+      toast.error('Не вдалося вийти з кімнати')
       console.error('Помилка видалення кімнати:', error)
     }
   })

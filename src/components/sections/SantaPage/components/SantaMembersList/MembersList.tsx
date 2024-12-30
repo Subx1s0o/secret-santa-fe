@@ -5,8 +5,7 @@ import Image from 'next/image'
 import AddressForm from '@/components/forms/SantasForms/AddressForm'
 import WishForm from '@/components/forms/SantasForms/WishForm'
 import SantaCopyingLinkButton from '@/components/ui/SantaCopyingLinkButton'
-
-import UserGiftCheckbox from '../../../../ui/UserGiftCheckbox'
+import UserGiftCheckbox from '@/components/ui/UserGiftCheckbox'
 
 export default function MembersList({
   santa,
