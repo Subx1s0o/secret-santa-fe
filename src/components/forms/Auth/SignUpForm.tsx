@@ -2,7 +2,6 @@
 
 import { register } from '@/actions/register'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -12,7 +11,6 @@ import Input from '../Input'
 import { SignUpSchema, SignUpType } from '../schemas/auth'
 
 export default function SignUpForm() {
-  const router = useRouter()
   const {
     control,
     formState: { isSubmitting },
@@ -24,8 +22,6 @@ export default function SignUpForm() {
   async function onSubmit(data: SignUpType) {
     try {
       await register(data)
-
-      router.push('/santas')
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(error.message)

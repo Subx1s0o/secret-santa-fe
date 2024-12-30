@@ -21,6 +21,7 @@ const SocketConnect = ({ token, session }: SocketConnectProps) => {
     socket.emit('join-room', { room: token, sessionToken: session })
 
     socket.on('room-joined', response => {
+      console.log(response)
       if (response.success) {
         router.replace('/santas/status/success')
       } else {

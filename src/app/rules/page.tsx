@@ -1,3 +1,10 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Правила Санти',
+  description: 'Made by Subx1s0o :)'
+}
+
 export default function page() {
   return (
     <section>

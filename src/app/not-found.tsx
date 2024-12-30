@@ -1,3 +1,10 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Незнайдена сторінка Санти',
+  description: 'Made by Subx1s0o :)'
+}
+
 export default function NotFound() {
   return (
     <div

@@ -1,4 +1,11 @@
+import { Metadata } from 'next'
+
 import CreateSantaSection from '@/components/sections/CreateSantaSection/CreateSantaSection'
+
+export const metadata: Metadata = {
+  title: 'Створення Санти',
+  description: 'Made by Subx1s0o :)'
+}
 
 export default function CreateRoom() {
   return (

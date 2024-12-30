@@ -1,33 +1,36 @@
-'use client'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
-import { useEffect } from 'react'
-import deleteJoinToken from '@/actions/deleteJoinToken'
-import { useRouter } from 'next/navigation'
-
-import ErrorStatusSection from '@/components/sections/StatusSections/ErrorStatusSection'
-import SuccessStatusSection from '@/components/sections/StatusSections/SuccessStatusSection'
+import StatusHandler from './StatusHandler'
 
 interface PageProps {
-  params: { status: string }
+  params: { status: 'success' | 'failed' }
+}
+
+export async function generateMetadata({
+  params
+}: PageProps): Promise<Metadata> {
+  const { status } = params
+
+  if (status === 'success') {
+    return {
+      title: 'Успішно увійшли до санти :)',
+      description:
+        'Ця сторінка підтверджує успішний вхід до Санти. Насолоджуйтесь святковим настроєм!'
+    }
+  }
+
+  if (status === 'failed') {
+    return {
+      title: 'Невдалося увійти до санти :(',
+      description:
+        'Ця сторінка відображається при невдалій спробі увійти до Санти. Спробуйте ще раз!'
+    }
+  }
+
+  return notFound()
 }
 
 export default function StatusPage({ params }: PageProps) {
-  const router = useRouter()
-
-  useEffect(() => {
-    deleteJoinToken()
-    if (params.status === 'success') {
-      router.replace('/santas/status/success')
-    } else if (params.status === 'failed') {
-      router.replace('/santas/status/failed')
-    }
-  }, [params.status, router])
-
-  if (params.status === 'success') {
-    return <SuccessStatusSection />
-  }
-
-  if (params.status === 'failed') {
-    return <ErrorStatusSection />
-  }
+  return <StatusHandler status={params.status} />
 }

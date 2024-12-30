@@ -1,9 +1,15 @@
 import { getSession } from '@/actions/getSession'
+import { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 
 import JoinConnect from '@/components/common/JoinConnect'
 import SantasSection from '@/components/sections/SantasSection/SantasSection'
+
+export const metadata: Metadata = {
+  title: 'Мій Санта',
+  description: 'Made by Subx1s0o :)'
+}
 
 export default async function Rooms() {
   const token = cookies().get('join_token')?.value

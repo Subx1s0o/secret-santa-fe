@@ -9,8 +9,8 @@ import HelpingFooter from '@/components/common/HelpingFooter'
 import Providers from '@/components/providers/Providers'
 
 export const metadata: Metadata = {
-  title: 'Santa App For GoIT career service',
-  description: 'Made by Nazar :)'
+  title: 'Гра Санта для карʼєрного центру GoIT',
+  description: 'Made by Subx1s0o :)'
 }
 
 const Anonymous = Anonymous_Pro({
