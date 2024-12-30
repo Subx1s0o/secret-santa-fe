@@ -50,7 +50,7 @@ export default function MembersList({
               <SantaCopyingLinkButton
                 link={user.name}
                 initialText={`${user.name}`}
-                className='max-w-[200px] gap-2 overflow-hidden text-ellipsis text-nowrap text-md'
+                className='max-w-[160px] gap-2 overflow-hidden text-ellipsis text-nowrap text-md'
               />
             </div>
             <SantaCopyingLinkButton
